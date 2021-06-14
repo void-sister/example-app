@@ -10,6 +10,6 @@
 
 @section('content')
     <div>
-        show - {{ $category }}
+        <p>show: {{ $category->id }} - {{ $category->slug }} | {{ $category->name_ru }} | {{ $category->name_uk }} | {{ $category->description }}</p>
     </div>
 @endsection

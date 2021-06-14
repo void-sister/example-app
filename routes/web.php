@@ -18,5 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
+Route::get('/categories/{slug}/edit', [CategoryController::class, 'edit']);
+Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');

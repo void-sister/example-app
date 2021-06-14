@@ -74,29 +74,40 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified category.
      *
-     * @param Category $category
+     * @param string $slug
      * @return View
      */
-    public function edit(Category $category): View
+    public function edit(string $slug): View
     {
-        return view('categories.edit', compact('category'));
+        $service = new CategoryService();
+        $category = $service->getCategoryBySlug($slug);
+
+        return view('categories.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified category in storage.
      *
      * @param  Request  $request
-     * @param Category $category
+     * @param string $slug
      * @return RedirectResponse
      */
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(Request $request, string $slug): RedirectResponse
     {
         $request->validate([
             'slug' => 'required',
             'name_ru' => 'required',
             'name_uk' => 'required'
         ]);
-        $category->update($request->all());
+
+        $service = new CategoryService();
+        $id = $service->updateCategory($request->all(), $slug);
+
+        if(!$id) {
+            return redirect()->back()->with('error', 'Category not updated');
+        }
 
         return redirect()->route('categories.index')
             ->with('success', 'Category updated successfully');
