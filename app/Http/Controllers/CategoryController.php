@@ -58,12 +58,17 @@ class CategoryController extends Controller
     /**
      * Display the specified category.
      *
-     * @param Category $category
+     * @param string $slug
      * @return View
      */
-    public function show(Category $category): View
+    public function show(string $slug): View
     {
-        return view('categories.show', compact('category'));
+        $service = new CategoryService();
+        $category = $service->getCategoryBySlug($slug);
+
+        return view('categories.show', [
+            'category' => $category
+        ]);
     }
 
     /**
