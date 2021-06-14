@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Http\Services\CategoryService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::all();
+        $service = new CategoryService();
+        $categories = $service->getList();
 
         return view('categories.index', [
             'categories' => $categories

@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('categories', CategoryController::class)->except(['destroy']);
+Route::get('/categories', [CategoryController::class, 'index']);
