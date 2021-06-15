@@ -11,7 +11,7 @@
 @section('content')
     <div>
         @foreach ($categories as $category)
-            <p>{{ $category->id }} - {{ $category->slug }} | {{ $category->name_ru }} | {{ $category->name_uk }} | {{ $category->description }}</p>
+            <p>{{ $category->id }} - {{ $category->slug }} | {{ $category->name_ru }} | {{ $category->name_uk }} | {{ $category->description }} | {{ $category->is_archived }}</p>
         @endforeach
     </div>
 @endsection

@@ -21,4 +21,16 @@ class CategoryRepository extends BaseRepository
             'name_uk' => $params['name_uk'],
         ]);
     }
+
+    public function archive($slug) {
+        return Category::where('slug', $slug)->update([
+            'is_archived' => true,
+        ]);
+    }
+
+    public function returnFromArchive($slug) {
+        return Category::where('slug', $slug)->update([
+            'is_archived' => false,
+        ]);
+    }
 }

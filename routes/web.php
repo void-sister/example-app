@@ -22,3 +22,5 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/categories/{slug}/edit', [CategoryController::class, 'edit']);
 Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');
+Route::post('/categories/{slug}/archive', [CategoryController::class, 'archive'])->name('categories.archive');
+Route::post('/categories/{slug}/return', [CategoryController::class, 'return'])->name('categories.return');

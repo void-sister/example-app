@@ -116,14 +116,38 @@ class CategoryController extends Controller
     /**
      * Archive the specified category.
      *
-     * @param Category $category
+     * @param string $slug
      * @return RedirectResponse
      */
-    public function archive(Category $category): RedirectResponse
+    public function archive(string $slug): RedirectResponse
     {
-        //TODO archive
+        $service = new CategoryService();
+        $id = $service->archive($slug);
+
+        if(!$id) {
+            return redirect()->back()->with('error', 'Category not archived');
+        }
 
         return redirect()->route('categories.index')
             ->with('success', 'Category archived successfully');
+    }
+
+    /**
+     * Return from archive specified category.
+     *
+     * @param string $slug
+     * @return RedirectResponse
+     */
+    public function return(string $slug): RedirectResponse
+    {
+        $service = new CategoryService();
+        $id = $service->returnFromArchive($slug);
+
+        if(!$id) {
+            return redirect()->back()->with('error', 'Category not returned from archive');
+        }
+
+        return redirect()->route('categories.index')
+            ->with('success', 'Category returned from archive successfully');
     }
 }

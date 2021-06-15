@@ -20,4 +20,14 @@ class CategoryService extends BaseService
         $repository = new CategoryRepository();
         return $repository->updateCategory($params, $slug);
     }
+
+    public function archive($slug) {
+        $repository = new CategoryRepository();
+        return $repository->archive($slug);
+    }
+
+    public function returnFromArchive($slug) {
+        $repository = new CategoryRepository();
+        return $repository->returnFromArchive($slug);
+    }
 }
