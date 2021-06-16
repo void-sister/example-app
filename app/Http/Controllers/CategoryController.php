@@ -48,8 +48,12 @@ class CategoryController extends Controller
             'name_uk' => 'required',
         ]);
 
-        $category = new Category();
-        $category->save($request->all());
+        $service = new CategoryService();
+        $created = $service->createCategory($request->all());
+
+        if(!$created) {
+            return redirect()->back()->with('error', 'Category not created');
+        }
 
         return redirect()->route('categories.index')
             ->with('success', 'Category created successfully.');

@@ -22,6 +22,15 @@ class CategoryRepository extends BaseRepository
         ]);
     }
 
+    public function createCategory($params)
+    {
+        return Category::create([
+            'slug' => $params['slug'],
+            'name_ru' => $params['name_ru'],
+            'name_uk' => $params['name_uk'],
+        ]);
+    }
+
     public function archive($slug) {
         return Category::where('slug', $slug)->update([
             'is_archived' => true,
