@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Services\ProductService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Show products list.
+     *
+     * @return View
+     */
+    public function index(): View
+    {
+        return view('products.index');
+    }
 
     /**
      * Show the form for creating a new product.
@@ -17,6 +27,38 @@ class ProductController extends Controller
     public function create(): View
     {
         return view('products.create');
+    }
+
+    /**
+     * Store a newly created product in storage.
+     *
+     * @param  Request  $request
+     * @return RedirectResponse
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $request->validate([
+//            'SKU' => 'required|unique:products|max:20',
+            'slug' => 'required',
+            'product_name' => 'required',
+            'height' => 'required|integer',
+            'price' => 'required|integer',
+            'discount' => 'integer',
+            'units_in_stock' => 'integer',
+            'units_on_order' => 'integer',
+//            'product_available' => 'boolean',
+//            'discount_available' => 'boolean',
+        ]);
+
+        $service = new ProductService();
+        $created = $service->createProduct($request->all());
+
+        if(!$created) {
+            return redirect()->back()->with('error', 'Product not created');
+        }
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product created successfully.');
     }
 
     /**

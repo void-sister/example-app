@@ -11,6 +11,12 @@ class ProductService extends BaseService
         return $repository->getProductBySlug($slug);
     }
 
+    public function createProduct($params)
+    {
+        $repository = new ProductRepository();
+        return $repository->createProduct($params);
+    }
+
     public function archive($slug) {
         $repository = new ProductRepository();
         return $repository->archive($slug);
