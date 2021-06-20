@@ -31,3 +31,6 @@ Route::post('/categories/{slug}/return', [CategoryController::class, 'return'])-
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/{slug}', [ProductController::class, 'show']);
+Route::post('/products/{slug}/archive', [ProductController::class, 'archive'])->name('products.archive');
+Route::post('/products/{slug}/return', [ProductController::class, 'return'])->name('products.return');

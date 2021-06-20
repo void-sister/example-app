@@ -108,7 +108,7 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Product not archived');
         }
 
-        return redirect()->route('products.show', ['slug' => $slug])
+        return redirect()->route('products.index')
             ->with('success', 'Product archived successfully');
     }
 
@@ -127,7 +127,7 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Product not returned from archive');
         }
 
-        return redirect()->route('categories.show', ['slug' => $slug])
+        return redirect()->route('products.index')
             ->with('success', 'Product returned from archive successfully');
     }
 }
