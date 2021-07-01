@@ -32,5 +32,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{slug}', [ProductController::class, 'show']);
+Route::get('/products/{slug}/edit', [ProductController::class, 'edit']);
+Route::put('/products/{slug}', [ProductController::class, 'update'])->name('products.update');
 Route::post('/products/{slug}/archive', [ProductController::class, 'archive'])->name('products.archive');
 Route::post('/products/{slug}/return', [ProductController::class, 'return'])->name('products.return');

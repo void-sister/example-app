@@ -94,6 +94,39 @@ class ProductController extends Controller
     }
 
     /**
+     * Update the specified product in storage.
+     *
+     * @param Request $request
+     * @param string $slug
+     * @return RedirectResponse
+     */
+    public function update(Request $request, string $slug): RedirectResponse
+    {
+        $request->validate([
+//            'SKU' => 'required|unique:products|max:20',
+            'slug' => 'required',
+            'product_name' => 'required',
+            'height' => 'required|integer',
+            'price' => 'required|integer',
+            'discount' => 'integer',
+            'units_in_stock' => 'integer',
+            'units_on_order' => 'integer',
+//            'product_available' => 'boolean',
+//            'discount_available' => 'boolean',
+        ]);
+
+        $service = new ProductService();
+        $id = $service->updateProduct($request->all(), $slug);
+
+        if(!$id) {
+            return redirect()->back()->with('error', 'Product not updated');
+        }
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product updated successfully');
+    }
+
+    /**
      * Archive the specified product.
      *
      * @param string $slug
