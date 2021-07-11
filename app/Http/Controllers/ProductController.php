@@ -38,16 +38,18 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-//            'SKU' => 'required|unique:products|max:20',
+            'SKU' => 'required|max:20',
             'slug' => 'required',
             'product_name' => 'required',
+            'indoor_light' => 'required|integer',
+            'outdoor_light' => 'required|integer',
+            'difficulty' => 'required|integer',
             'height' => 'required|integer',
+            'size' => 'required|integer',
             'price' => 'required|integer',
             'discount' => 'integer',
             'units_in_stock' => 'integer',
             'units_on_order' => 'integer',
-//            'product_available' => 'boolean',
-//            'discount_available' => 'boolean',
         ]);
 
         $service = new ProductService();
@@ -103,16 +105,18 @@ class ProductController extends Controller
     public function update(Request $request, string $slug): RedirectResponse
     {
         $request->validate([
-//            'SKU' => 'required|unique:products|max:20',
+            'SKU' => 'required|max:20',
             'slug' => 'required',
             'product_name' => 'required',
+            'indoor_light' => 'required|integer',
+            'outdoor_light' => 'required|integer',
+            'difficulty' => 'required|integer',
             'height' => 'required|integer',
+            'size' => 'required|integer',
             'price' => 'required|integer',
             'discount' => 'integer',
             'units_in_stock' => 'integer',
             'units_on_order' => 'integer',
-//            'product_available' => 'boolean',
-//            'discount_available' => 'boolean',
         ]);
 
         $service = new ProductService();

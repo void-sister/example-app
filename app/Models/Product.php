@@ -46,6 +46,8 @@ class Product extends Model
     private $discount;
     private $units_in_stock;
     private $units_on_order;
+    private $product_available;
+    private $discount_available;
 
     const INDOOR_LIGHT_LOW = 1;
     const INDOOR_LIGHT_PARTIAL = 2;
@@ -135,5 +137,17 @@ class Product extends Model
     public function isPetFriendly(): bool
     {
         return $this->pet_friendly == true;
+    }
+
+    /** check product available */
+    public function isProductAvailable(): bool
+    {
+        return $this->product_available == true;
+    }
+
+    /** check discount available */
+    public function isDiscountAvailable(): bool
+    {
+        return $this->discount_available == true;
     }
 }

@@ -18,13 +18,19 @@ class ProductRepository extends BaseRepository
             'product_name' => $params['product_name'],
             'product_description' => $params['product_description'],
             'care_rules' => $params['care_rules'],
+            'indoor_light' => $params['indoor_light'],
+            'outdoor_light' => $params['outdoor_light'],
+            'air_cleaner' => isset($params['air_cleaner']) ? 1 : 0,
+            'pet_friendly' => isset($params['pet_friendly']) ? 1 : 0,
+            'difficulty' => $params['difficulty'],
             'height' => $params['height'],
+            'size' => $params['size'],
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
             'units_on_order' => $params['units_on_order'],
-//            'product_available' => $params['product_available'],
-            'discount_available' => 0,
+            'product_available' => isset($params['product_available']) ? 1 : 0,
+            'discount_available' => isset($params['discount_available']) ? 1 : 0,
         ]);
     }
 
@@ -35,13 +41,19 @@ class ProductRepository extends BaseRepository
             'product_name' => $params['product_name'],
             'product_description' => $params['product_description'],
             'care_rules' => $params['care_rules'],
+            'indoor_light' => $params['indoor_light'],
+            'outdoor_light' => $params['outdoor_light'],
+            'air_cleaner' => $params['air_cleaner'] ? 1 : 0,
+            'pet_friendly' => $params['pet_friendly'] ? 1 : 0,
+            'difficulty' => $params['difficulty'],
             'height' => $params['height'],
+            'size' => $params['size'],
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
             'units_on_order' => $params['units_on_order'],
-//            'product_available' => $params['product_available'],
-//            'discount_available' => $params['discount_available'],
+            'product_available' => $params['product_available'] ? 1 : 0,
+            'discount_available' => $params['discount_available'] ? 1 : 0,
         ]);
     }
 

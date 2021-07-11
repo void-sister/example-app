@@ -66,11 +66,81 @@
             </div>
 
             <div class="form-group mb-2">
+                <label for="size">Indoor light</label>
+                <select class="form-control @error('indoor_light') is-invalid @enderror" name="indoor_light" id="indoor_light">
+                    <option value=""> Select indoor light </option>
+                    @foreach(\App\Models\Product::getIndoorLightTypes() as $key => $type)
+                        <option value="{{ $key }}"> {{ $type }}</option>
+                    @endforeach
+                </select>
+
+                @error('indoor_light')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="size">Outdoor light</label>
+                <select class="form-control @error('outdoor_light') is-invalid @enderror" name="outdoor_light" id="outdoor_light">
+                    <option value=""> Select outdoor light </option>
+                    @foreach(\App\Models\Product::getOutdoorLightTypes() as $key => $type)
+                        <option value="{{ $key }}"> {{ $type }}</option>
+                    @endforeach
+                </select>
+
+                @error('outdoor_light')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="air_cleaner" name="air_cleaner">
+                <label class="form-check-label" for="air_cleaner">
+                    Air cleaner
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="pet_friendly" name="pet_friendly">
+                <label class="form-check-label" for="pet_friendly">
+                    Pet friendly
+                </label>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="size">Difficulty</label>
+                <select class="form-control @error('difficulty') is-invalid @enderror" name="difficulty" id="difficulty">
+                    <option value=""> Select difficulty </option>
+                    @foreach(\App\Models\Product::getDifficultyTypes() as $key => $type)
+                        <option value="{{ $key }}"> {{ $type }}</option>
+                    @endforeach
+                </select>
+
+                @error('difficulty')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group mb-2">
                 <label for="height">Height</label>
                 <input type="number" class="form-control @error('height') is-invalid @enderror"
                        id="height" name="height" placeholder="Height">
 
                 @error('height')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="size">Size</label>
+                <select class="form-control @error('size') is-invalid @enderror" name="size" id="size">
+                    <option value=""> Select </option>
+                    @foreach(\App\Models\Product::getSizes() as $key => $size)
+                        <option value="{{ $key }}"> {{ $size }}</option>
+                    @endforeach
+                </select>
+
+                @error('size')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
