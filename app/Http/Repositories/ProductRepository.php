@@ -20,8 +20,8 @@ class ProductRepository extends BaseRepository
             'care_rules' => $params['care_rules'],
             'indoor_light' => $params['indoor_light'],
             'outdoor_light' => $params['outdoor_light'],
-            'air_cleaner' => isset($params['air_cleaner']) ? 1 : 0,
-            'pet_friendly' => isset($params['pet_friendly']) ? 1 : 0,
+            'air_cleaner' => array_key_exists('air_cleaner', $params) ? 1 : 0,
+            'pet_friendly' => array_key_exists('pet_friendly', $params) ? 1 : 0,
             'difficulty' => $params['difficulty'],
             'height' => $params['height'],
             'size' => $params['size'],
@@ -29,8 +29,9 @@ class ProductRepository extends BaseRepository
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
             'units_on_order' => $params['units_on_order'],
-            'product_available' => isset($params['product_available']) ? 1 : 0,
-            'discount_available' => isset($params['discount_available']) ? 1 : 0,
+            'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
+            'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
+            'notes' => $params['notes']
         ]);
     }
 
@@ -43,8 +44,8 @@ class ProductRepository extends BaseRepository
             'care_rules' => $params['care_rules'],
             'indoor_light' => $params['indoor_light'],
             'outdoor_light' => $params['outdoor_light'],
-            'air_cleaner' => $params['air_cleaner'] ? 1 : 0,
-            'pet_friendly' => $params['pet_friendly'] ? 1 : 0,
+            'air_cleaner' => array_key_exists('air_cleaner', $params) ? 1 : 0,
+            'pet_friendly' => array_key_exists('pet_friendly', $params) ? 1 : 0,
             'difficulty' => $params['difficulty'],
             'height' => $params['height'],
             'size' => $params['size'],
@@ -52,8 +53,9 @@ class ProductRepository extends BaseRepository
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
             'units_on_order' => $params['units_on_order'],
-            'product_available' => $params['product_available'] ? 1 : 0,
-            'discount_available' => $params['discount_available'] ? 1 : 0,
+            'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
+            'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
+            'notes' => $params['notes']
         ]);
     }
 
