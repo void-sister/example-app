@@ -26,28 +26,9 @@ class Product extends Model
         'discount',
         'units_in_stock',
         'units_on_order',
-//        'product_available',
-//        'description_available',
+        'product_available',
+        'discount_available',
     ];
-
-    private $SKU;
-    private $slug;
-    private $product_name;
-    private $product_description;
-    private $care_rules;
-    private $indoor_light;
-    private $outdoor_light;
-    private $air_cleaner;
-    private $pet_friendly;
-    private $difficulty;
-    private $height;
-    private $size;
-    private $price;
-    private $discount;
-    private $units_in_stock;
-    private $units_on_order;
-    private $product_available;
-    private $discount_available;
 
     const INDOOR_LIGHT_LOW = 1;
     const INDOOR_LIGHT_PARTIAL = 2;
@@ -76,9 +57,9 @@ class Product extends Model
         ];
     }
 
-    public function getIndoorLightType(): string
+    public function getIndoorLightType($indoor_light): string
     {
-        return self::getIndoorLightTypes()[$this->indoor_light];
+        return self::getIndoorLightTypes()[$indoor_light];
     }
 
     /** outdoor light types */
@@ -90,9 +71,9 @@ class Product extends Model
         ];
     }
 
-    public function getOutdoorLightType(): string
+    public function getOutdoorLightType($outdoor_light): string
     {
-        return self::getOutdoorLightTypes()[$this->outdoor_light];
+        return self::getOutdoorLightTypes()[$outdoor_light];
     }
 
     /** difficulty types */
@@ -105,9 +86,9 @@ class Product extends Model
         ];
     }
 
-    public function getDifficultyType(): string
+    public function getDifficultyType($difficulty): string
     {
-        return self::getDifficultyTypes()[$this->difficulty];
+        return self::getDifficultyTypes()[$difficulty];
     }
 
     /** sizes */
@@ -122,32 +103,50 @@ class Product extends Model
         ];
     }
 
-    public function getSize(): string
+    public function getSize($size): string
     {
-        return self::getSizes()[$this->size];
+        return self::getSizes()[$size];
     }
 
     /** check air cleaner */
-    public function isAirCleaner(): bool
+    public function isAirCleaner($air_cleaner): bool
     {
-        return $this->air_cleaner == true;
+        return $air_cleaner == true;
     }
 
     /** check pet friendly */
-    public function isPetFriendly(): bool
+    public function isPetFriendly($pet_friendly): bool
     {
-        return $this->pet_friendly == true;
+        return $pet_friendly == true;
     }
 
     /** check product available */
-    public function isProductAvailable(): bool
+    public function isProductAvailable($product_available): bool
     {
-        return $this->product_available == true;
+        return $product_available == true;
     }
 
     /** check discount available */
-    public function isDiscountAvailable(): bool
+    public function isDiscountAvailable($discount_available): bool
     {
-        return $this->discount_available == true;
+        return $discount_available == true;
     }
+
+
+    /** Scopes */
+    public function scopeOfIndoorLightType($query, $type)
+    {
+        return $query->whereIn('indoor_light', $type); //TODO type is string, must be array. why?
+    }
+
+    public function scopeOfSize($query, $size)
+    {
+        return $query->whereIn('size', $size);//TODO size is string, must be array. why?
+    }
+
+    public function scopeOfDifficultyType($query, $type)
+    {
+        return $query->whereIn('difficulty', $type);//TODO type is string, must be array. why?
+    }
+    /** Scopes */
 }

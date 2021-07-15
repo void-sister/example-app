@@ -3,9 +3,62 @@
 namespace App\Http\Repositories;
 
 use App\Models\Product;
+use App\Models\ProductSearch;
 
 class ProductRepository extends BaseRepository
 {
+    public function getList($params) {
+        $query = Product::where('is_archived', false);
+
+        if (isset($params['indoor_light'])) {
+            $query = $query->ofIndoorLightType($params['indoor_light']);
+        }
+
+        if (isset($params['size'])) {
+            $query = $query->ofSize($params['size']);
+        }
+
+        if (isset($params['difficulty'])) {
+            $query = $query->ofDifficultyType($params['difficulty']);
+        }
+
+        if (isset($params['pet_friendly'])) {
+            $query = $query->where('pet_friendly', (int)$params['pet_friendly']);
+        }
+
+        if (isset($params['air_cleaner'])) {
+            $query = $query->where('air_cleaner', (int)$params['air_cleaner']);
+        }
+
+        //TODO: add price between
+
+        if (isset($params['sorting'])) {
+            switch ($params['sorting']) {
+                case ProductSearch::SORTING_TYPE_NEWEST:
+                    $query = $query->orderByDesc('products.created_at');
+                    break;
+                case ProductSearch::SORTING_TYPE_PRICE_ASC:
+                    $query = $query->orderBy('products.price');
+                    break;
+                case ProductSearch::SORTING_TYPE_PRICE_DESC:
+                    $query = $query->orderByDesc('products.price');
+                    break;
+                case ProductSearch::SORTING_TYPE_POPULARITY:
+                default:
+                    $query = $query->orderByDesc('products.ranking');
+                    break;
+            }
+        } else {
+            $query = $query->orderByDesc('products.ranking');
+        }
+
+        if (isset($params['amount'])) {
+            return $query->paginate((int)$params['amount']);
+        } else {
+            return $query->get();
+        }
+    }
+
     public function getProductBySlug($slug) {
         return Product::where('slug', $slug)->first();
     }

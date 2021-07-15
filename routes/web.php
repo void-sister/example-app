@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,6 @@ Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('c
 Route::post('/categories/{slug}/archive', [CategoryController::class, 'archive'])->name('categories.archive');
 Route::post('/categories/{slug}/return', [CategoryController::class, 'return'])->name('categories.return');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{slug}', [ProductController::class, 'show']);
@@ -36,3 +36,5 @@ Route::get('/products/{slug}/edit', [ProductController::class, 'edit']);
 Route::put('/products/{slug}', [ProductController::class, 'update'])->name('products.update');
 Route::post('/products/{slug}/archive', [ProductController::class, 'archive'])->name('products.archive');
 Route::post('/products/{slug}/return', [ProductController::class, 'return'])->name('products.return');
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');

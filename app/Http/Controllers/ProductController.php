@@ -10,16 +10,6 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Show products list.
-     *
-     * @return View
-     */
-    public function index(): View
-    {
-        return view('products.index');
-    }
-
-    /**
      * Show the form for creating a new product.
      *
      * @return View
