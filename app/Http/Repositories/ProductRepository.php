@@ -8,7 +8,7 @@ use App\Models\ProductSearch;
 class ProductRepository extends BaseRepository
 {
     public function getList($params) {
-        $query = Product::where('is_archived', false);
+        $query = Product::where('is_archived', false)->where('product_available', true);
 
         if (isset($params['indoor_light'])) {
             $query = $query->ofIndoorLightType($params['indoor_light']);
