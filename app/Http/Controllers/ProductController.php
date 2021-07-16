@@ -28,18 +28,17 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'SKU' => 'required|max:20',
-            'slug' => 'required',
-            'product_name' => 'required',
+            'SKU' => 'required|unique:products,SKU|max:20',
+            'slug' => 'required|unique:products,slug|max:255',
+            'product_name' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
             'difficulty' => 'required|integer',
-            'height' => 'required|integer',
+            'height' => 'required|integer|min:1',
             'size' => 'required|integer',
-            'price' => 'required|integer',
-            'discount' => 'integer',
+            'price' => 'required|integer|min:0',
+            'discount' => 'nullable|integer',
             'units_in_stock' => 'integer',
-            'units_on_order' => 'integer',
         ]);
 
         $service = new ProductService();
@@ -95,18 +94,17 @@ class ProductController extends Controller
     public function update(Request $request, string $slug): RedirectResponse
     {
         $request->validate([
-            'SKU' => 'required|max:20',
-            'slug' => 'required',
-            'product_name' => 'required',
+            'SKU' => 'required|unique:products,SKU|max:20',
+            'slug' => 'required|unique:products,slug|max:255',
+            'product_name' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
             'difficulty' => 'required|integer',
-            'height' => 'required|integer',
+            'height' => 'required|integer|min:1',
             'size' => 'required|integer',
-            'price' => 'required|integer',
-            'discount' => 'integer',
+            'price' => 'required|integer|min:0',
+            'discount' => 'nullable|integer',
             'units_in_stock' => 'integer',
-            'units_on_order' => 'integer',
         ]);
 
         $service = new ProductService();

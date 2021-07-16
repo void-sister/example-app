@@ -25,9 +25,9 @@ class Product extends Model
         'price',
         'discount',
         'units_in_stock',
-        'units_on_order',
         'product_available',
         'discount_available',
+        'notes',
     ];
 
     const INDOOR_LIGHT_LOW = 1;

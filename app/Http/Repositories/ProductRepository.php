@@ -81,7 +81,6 @@ class ProductRepository extends BaseRepository
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
-            'units_on_order' => $params['units_on_order'],
             'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
             'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
             'notes' => $params['notes']
@@ -105,7 +104,6 @@ class ProductRepository extends BaseRepository
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
-            'units_on_order' => $params['units_on_order'],
             'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
             'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
             'notes' => $params['notes']

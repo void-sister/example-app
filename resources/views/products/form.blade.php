@@ -173,17 +173,6 @@
     @enderror
 </div>
 
-<div class="form-group mb-2">
-    <label for="units_on_order">Units on order</label>
-    <input type="number" class="form-control @error('units_on_order') is-invalid @enderror"
-           value="{{ old('units_on_order', isset($product) ? $product->units_on_order : '') }}"
-           id="units_on_order" name="units_on_order" placeholder="Units on order">
-
-    @error('units_on_order')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
-
 <div class="form-check">
     <input class="form-check-input" type="checkbox"
            @if(isset($product) && $product->product_available == 1) checked @endif
