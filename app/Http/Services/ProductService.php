@@ -6,9 +6,14 @@ use App\Http\Repositories\ProductRepository;
 
 class ProductService extends BaseService
 {
-    public function getList($params) {
+    public function getListForAdmin() {
         $repository = new ProductRepository();
-        return $repository->getList($params);
+        return $repository->getListForAdmin();
+    }
+
+    public function getListForClient($params) {
+        $repository = new ProductRepository();
+        return $repository->getListForClient($params);
     }
 
     public function getProductBySlug($slug) {

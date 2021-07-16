@@ -33,7 +33,7 @@ class ProductSearch extends Model
         $queryParams['sorting'] = $params['sorting'] ?? $this->sorting;
 
         $service = new ProductService();
-        return $service->getList($queryParams);
+        return $service->getListForClient($queryParams);
     }
 
     public function getSortingTypes(): array

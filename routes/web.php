@@ -29,6 +29,7 @@ Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('c
 Route::post('/categories/{slug}/archive', [CategoryController::class, 'archive'])->name('categories.archive');
 Route::post('/categories/{slug}/return', [CategoryController::class, 'return'])->name('categories.return');
 
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{slug}', [ProductController::class, 'show']);

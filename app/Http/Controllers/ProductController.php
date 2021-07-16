@@ -10,6 +10,21 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
+     * Show products list.
+     *
+     * @return View
+     */
+    public function index(): View
+    {
+        $service = new ProductService();
+        $products = $service->getListForAdmin();
+
+        return view('products.index', [
+            'products' => $products
+        ]);
+    }
+
+    /**
      * Show the form for creating a new product.
      *
      * @return View
