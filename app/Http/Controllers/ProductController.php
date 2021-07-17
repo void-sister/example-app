@@ -170,4 +170,23 @@ class ProductController extends Controller
         return redirect()->route('products.index')
             ->with('success', 'Product returned from archive successfully');
     }
+
+    /**
+     * Add to cart specified product.
+     *
+     * @param string $slug
+     * @param int $qty
+     * @return RedirectResponse
+     */
+    public function addToCart(string $slug, int $qty = 1): RedirectResponse
+    {
+        $service = new ProductService();
+        $cart = $service->addToCart($slug, $qty); //true
+
+        if(!$cart) {
+            return redirect()->back()->with('error', 'Product not added to cart');
+        }
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 }

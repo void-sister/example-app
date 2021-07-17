@@ -41,4 +41,10 @@ class ProductService extends BaseService
         $repository = new ProductRepository();
         return $repository->returnFromArchive($slug);
     }
+
+    public function addToCart($slug, $qty): bool
+    {
+        $repository = new ProductRepository();
+        return $repository->addToCart($slug, $qty);
+    }
 }

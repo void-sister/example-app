@@ -125,4 +125,25 @@ class ProductRepository extends BaseRepository
             'is_archived' => false,
         ]);
     }
+
+    public function addToCart($slug, $qty): bool
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$slug])) {
+            $cart[$slug]['quantity']++;
+        } else {
+            $cart[$slug] = [
+                "name" => $product->product_name,
+                "quantity" => $qty,
+                "price" => $product->price,
+            ];
+        }
+
+        session()->put('cart', $cart);
+
+        return true; //TODO check from is returned. maybe $cart?
+    }
 }

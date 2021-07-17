@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +38,10 @@ Route::get('/products/{slug}/edit', [ProductController::class, 'edit']);
 Route::put('/products/{slug}', [ProductController::class, 'update'])->name('products.update');
 Route::post('/products/{slug}/archive', [ProductController::class, 'archive'])->name('products.archive');
 Route::post('/products/{slug}/return', [ProductController::class, 'return'])->name('products.return');
+Route::post('/products/{slug}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.add-to-cart');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');

@@ -31,6 +31,13 @@
                     <input type="submit" name="send" value="Archive" class="btn btn-dark btn-block">
                 </div>
             </form>
+            <br>
+            <form method="POST" action="{{ route('products.add-to-cart', ['slug' => $product->slug, 'qty' => 1]) }}">
+                @csrf
+                <div class="d-grid mt-3">
+                    <input type="submit" name="add-to-cart" value="Add to cart" class="btn btn-primary btn-block">
+                </div>
+            </form>
         @else
             <form method="POST" action="{{ route('products.return', ['slug' => $product->slug]) }}">
                 @csrf
