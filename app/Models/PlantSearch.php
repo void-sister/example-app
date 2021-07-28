@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Http\Services\ProductService;
+use App\Http\Services\PlantService;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductSearch extends Model
+class PlantSearch extends Model
 {
     public $skip;
     public $amount = 10;
@@ -32,7 +32,7 @@ class ProductSearch extends Model
         $queryParams['amount'] = $this->amount;
         $queryParams['sorting'] = $params['sorting'] ?? $this->sorting;
 
-        $service = new ProductService();
+        $service = new PlantService();
         return $service->getListForClient($queryParams);
     }
 

@@ -2,17 +2,17 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\Product;
-use App\Models\ProductSearch;
+use App\Models\Plant;
+use App\Models\PlantSearch;
 
-class ProductRepository extends BaseRepository
+class PlantRepository extends BaseRepository
 {
     public function getListForAdmin() {
-        return Product::all();
+        return Plant::all();
     }
 
     public function getListForClient($params) {
-        $query = Product::where('is_archived', false)->where('product_available', true);
+        $query = Plant::where('is_archived', false)->where('plant_available', true);
 
         if (isset($params['indoor_light'])) {
             $query = $query->ofIndoorLightType($params['indoor_light']);
@@ -38,22 +38,22 @@ class ProductRepository extends BaseRepository
 
         if (isset($params['sorting'])) {
             switch ($params['sorting']) {
-                case ProductSearch::SORTING_TYPE_NEWEST:
-                    $query = $query->orderByDesc('products.created_at');
+                case PlantSearch::SORTING_TYPE_NEWEST:
+                    $query = $query->orderByDesc('plants.created_at');
                     break;
-                case ProductSearch::SORTING_TYPE_PRICE_ASC:
-                    $query = $query->orderBy('products.price');
+                case PlantSearch::SORTING_TYPE_PRICE_ASC:
+                    $query = $query->orderBy('plants.price');
                     break;
-                case ProductSearch::SORTING_TYPE_PRICE_DESC:
-                    $query = $query->orderByDesc('products.price');
+                case PlantSearch::SORTING_TYPE_PRICE_DESC:
+                    $query = $query->orderByDesc('plants.price');
                     break;
-                case ProductSearch::SORTING_TYPE_POPULARITY:
+                case PlantSearch::SORTING_TYPE_POPULARITY:
                 default:
-                    $query = $query->orderByDesc('products.ranking');
+                    $query = $query->orderByDesc('plants.ranking');
                     break;
             }
         } else {
-            $query = $query->orderByDesc('products.ranking');
+            $query = $query->orderByDesc('plants.ranking');
         }
 
         if (isset($params['amount'])) {
@@ -63,17 +63,17 @@ class ProductRepository extends BaseRepository
         }
     }
 
-    public function getProductBySlug($slug) {
-        return Product::where('slug', $slug)->first();
+    public function getPlantBySlug($slug) {
+        return Plant::where('slug', $slug)->first();
     }
 
-    public function createProduct($params)
+    public function createPlant($params)
     {
-        return Product::create([
+        return Plant::create([
             'SKU' => $params['SKU'],
             'slug' => $params['slug'],
-            'product_name' => $params['product_name'],
-            'product_description' => $params['product_description'],
+            'plant_name' => $params['plant_name'],
+            'plant_description' => $params['plant_description'],
             'care_rules' => $params['care_rules'],
             'indoor_light' => $params['indoor_light'],
             'outdoor_light' => $params['outdoor_light'],
@@ -85,18 +85,18 @@ class ProductRepository extends BaseRepository
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
-            'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
+            'plant_available' => array_key_exists('plant_available', $params) ? 1 : 0,
             'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
             'notes' => $params['notes']
         ]);
     }
 
-    public function updateProduct($params, $slug) {
-        return Product::where('slug', $slug)->update([
+    public function updatePlant($params, $slug) {
+        return Plant::where('slug', $slug)->update([
             'SKU' => $params['SKU'],
             'slug' => $params['slug'],
-            'product_name' => $params['product_name'],
-            'product_description' => $params['product_description'],
+            'plant_name' => $params['plant_name'],
+            'plant_description' => $params['plant_description'],
             'care_rules' => $params['care_rules'],
             'indoor_light' => $params['indoor_light'],
             'outdoor_light' => $params['outdoor_light'],
@@ -108,27 +108,27 @@ class ProductRepository extends BaseRepository
             'price' => $params['price'],
             'discount' => $params['discount'],
             'units_in_stock' => $params['units_in_stock'],
-            'product_available' => array_key_exists('product_available', $params) ? 1 : 0,
+            'plant_available' => array_key_exists('plant_available', $params) ? 1 : 0,
             'discount_available' => array_key_exists('discount_available', $params) ? 1 : 0,
             'notes' => $params['notes']
         ]);
     }
 
     public function archive($slug) {
-        return Product::where('slug', $slug)->update([
+        return Plant::where('slug', $slug)->update([
             'is_archived' => true,
         ]);
     }
 
     public function returnFromArchive($slug) {
-        return Product::where('slug', $slug)->update([
+        return Plant::where('slug', $slug)->update([
             'is_archived' => false,
         ]);
     }
 
     public function addToCart($slug, $qty): bool
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
+        $plant = Plant::where('slug', $slug)->firstOrFail();
 
         $cart = session()->get('cart', []);
 
@@ -136,9 +136,9 @@ class ProductRepository extends BaseRepository
             $cart[$slug]['quantity']++;
         } else {
             $cart[$slug] = [
-                "name" => $product->product_name,
+                "name" => $plant->plant_name,
                 "quantity" => $qty,
-                "price" => $product->price,
+                "price" => $plant->price,
             ];
         }
 

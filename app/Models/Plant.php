@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Plant extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'SKU',
         'slug',
-        'product_name',
-        'product_description',
+        'plant_name',
+        'plant_description',
         'care_rules',
         'indoor_light',
         'outdoor_light',
@@ -25,7 +25,7 @@ class Product extends Model
         'price',
         'discount',
         'units_in_stock',
-        'product_available',
+        'plant_available',
         'discount_available',
         'notes',
     ];
@@ -120,10 +120,10 @@ class Product extends Model
         return $pet_friendly == true;
     }
 
-    /** check product available */
-    public function isProductAvailable($product_available): bool
+    /** check plant available */
+    public function isPlantAvailable($plant_available): bool
     {
-        return $product_available == true;
+        return $plant_available == true;
     }
 
     /** check discount available */

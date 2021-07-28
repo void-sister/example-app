@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductSearch;
+use App\Models\PlantSearch;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,7 +12,7 @@ class ShopController extends Controller
     {
         //TODO validate request
 
-        $searchModel = new ProductSearch();
+        $searchModel = new PlantSearch();
         $products = $searchModel->search($request->all());
 
         return view('shop.index', [

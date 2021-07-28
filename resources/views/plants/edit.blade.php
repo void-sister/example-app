@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit product')
+@section('title', 'Edit plant')
 
 @section('sidebar')
     @parent
@@ -10,11 +10,11 @@
 
 @section('content')
     <div>
-        <form method="POST" action="{{ route('products.update', ['slug' => $product->slug]) }}">
+        <form method="POST" action="{{ route('plants.update', ['slug' => $plant->slug]) }}">
             @method('PUT')
             @csrf
 
-            @include('products.form', ['product' => $product])
+            @include('plants.form', ['plant' => $plant])
         </form>
     </div>
 @endsection

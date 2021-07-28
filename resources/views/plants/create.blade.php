@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create product')
+@section('title', 'Create plant')
 
 @section('sidebar')
     @parent
@@ -10,10 +10,10 @@
 
 @section('content')
     <div>
-        <form method="POST" action="{{ route('products.store') }}">
+        <form method="POST" action="{{ route('plants.store') }}">
             @csrf
 
-            @include('products.form')
+            @include('plants.form')
         </form>
     </div>
 @endsection
