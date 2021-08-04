@@ -25,15 +25,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/create', [CategoryController::class, 'create']);
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('/categories/{slug}', [CategoryController::class, 'show']);
-Route::get('/categories/{slug}/edit', [CategoryController::class, 'edit']);
-Route::put('/categories/{slug}', [CategoryController::class, 'update'])->name('categories.update');
-Route::post('/categories/{slug}/archive', [CategoryController::class, 'archive'])->name('categories.archive');
-Route::post('/categories/{slug}/return', [CategoryController::class, 'return'])->name('categories.return');
-
 Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');
 Route::get('/plants/create', [PlantController::class, 'create']);
 Route::post('/plants', [PlantController::class, 'store'])->name('plants.store');
