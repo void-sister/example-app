@@ -15,11 +15,14 @@ class CreatePlantsTable extends Migration
     {
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
-            $table->char('SKU', 20)->unique();
             $table->string('slug')->unique();
-            $table->string('plant_name');
-            $table->longText('plant_description')->nullable();
-            $table->longText('care_rules')->nullable();
+            $table->string('name_ru');
+            $table->string('name_uk');
+            $table->string('botanical_name');
+            $table->longText('description_ru');
+            $table->longText('description_uk');
+            $table->longText('care_rules_ru');
+            $table->longText('care_rules_uk');
             $table->unsignedInteger('indoor_light');
             $table->unsignedInteger('outdoor_light');
             $table->boolean('air_cleaner')->default(false);
@@ -27,12 +30,6 @@ class CreatePlantsTable extends Migration
             $table->unsignedInteger('difficulty');
             $table->unsignedInteger('height');
             $table->unsignedInteger('size');
-            $table->unsignedInteger('price');
-            $table->unsignedInteger('discount')->nullable()->comment('in currency, not in percent');
-            $table->integer('units_in_stock')->default(0);
-            $table->integer('units_on_order')->nullable(); //TODO mb ok mb not
-            $table->boolean('plant_available')->default(true);
-            $table->boolean('discount_available')->default(false);
             $table->binary('picture')->nullable();
             $table->unsignedDouble('ranking')->default(0);
             $table->tinyText('notes')->nullable();
