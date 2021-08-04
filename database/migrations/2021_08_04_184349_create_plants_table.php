@@ -17,12 +17,12 @@ class CreatePlantsTable extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('name_ru');
-            $table->string('name_uk');
-            $table->string('botanical_name');
-            $table->longText('description_ru');
-            $table->longText('description_uk');
-            $table->longText('care_rules_ru');
-            $table->longText('care_rules_uk');
+            $table->string('name_uk')->nullable();
+            $table->string('botanical_name')->nullable();
+            $table->longText('description_ru')->nullable();
+            $table->longText('description_uk')->nullable();
+            $table->longText('care_rules_ru')->nullable();
+            $table->longText('care_rules_uk')->nullable();
             $table->unsignedInteger('indoor_light');
             $table->unsignedInteger('outdoor_light');
             $table->boolean('air_cleaner')->default(false);

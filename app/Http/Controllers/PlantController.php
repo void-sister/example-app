@@ -43,17 +43,13 @@ class PlantController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'SKU' => 'required|unique:plants,SKU|max:20',
-            'slug' => 'required|unique:plants,slug|max:255',
-            'plant_name' => 'required|string|max:255',
+            'slug' => 'required|unique:plants|max:255',
+            'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
             'difficulty' => 'required|integer',
             'height' => 'required|integer|min:1',
             'size' => 'required|integer',
-            'price' => 'required|integer|min:0',
-            'discount' => 'nullable|integer',
-            'units_in_stock' => 'integer',
         ]);
 
         $service = new PlantService();
@@ -109,17 +105,13 @@ class PlantController extends Controller
     public function update(Request $request, string $slug): RedirectResponse
     {
         $request->validate([
-            'SKU' => 'required|unique:plants,SKU|max:20',
-            'slug' => 'required|unique:plants,slug|max:255',
-            'plant_name' => 'required|string|max:255',
+            'slug' => 'required|unique:plants|max:255',
+            'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
             'difficulty' => 'required|integer',
             'height' => 'required|integer|min:1',
             'size' => 'required|integer',
-            'price' => 'required|integer|min:0',
-            'discount' => 'nullable|integer',
-            'units_in_stock' => 'integer',
         ]);
 
         $service = new PlantService();

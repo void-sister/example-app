@@ -10,18 +10,11 @@
 
 @section('content')
     <div>
-        <p>SKU: {{ $plant->SKU }}</p>
         <p>slug: {{ $plant->slug }}</p>
-        <p>plant_name: {{ $plant->plant_name }}</p>
-        <p>plant_description: {{ $plant->plant_description }}</p>
-        <p>care_rules: {{ $plant->care_rules }}</p>
+        <p>plant_name: {{ $plant->name_ru }}</p>
+        <p>plant_description: {{ $plant->description_ru }}</p>
+        <p>care_rules: {{ $plant->care_rules_ru }}</p>
         <p>height: {{ $plant->height }}</p>
-        <p>price: {{ $plant->price }}</p>
-        <p>discount: {{ $plant->discount }}</p>
-        <p>units_in_stock: {{ $plant->units_in_stock }}</p>
-        <p>units_on_order: {{ $plant->units_on_order }}</p>
-        <p>plant_available: {{ $plant->plant_available }}</p>
-        <p>discount_available: {{ $plant->discount_available }}</p>
         <p>is_archived: {{ $plant->is_archived }}</p>
 
         @if(!$plant->is_archived)

@@ -1,15 +1,4 @@
 <div class="form-group mb-2">
-    <label for="SKU">SKU</label>
-    <input type="text" class="form-control @error('SKU') is-invalid @enderror"
-           id="SKU" name="SKU" value="{{ old('SKU', isset($plant) ? $plant->SKU : '') }}"
-           placeholder="Enter SKU">
-
-    @error('SKU')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
-
-<div class="form-group mb-2">
     <label for="slug">Slug</label>
     <input type="text" class="form-control @error('slug') is-invalid @enderror"
            id="slug" name="slug" value="{{ old('slug', isset($plant) ? $plant->slug : '') }}"
@@ -23,34 +12,78 @@
 </div>
 
 <div class="form-group mb-2">
-    <label for="plant_name">Plant name</label>
-    <input type="text" class="form-control @error('plant_name') is-invalid @enderror"
-           id="plant_name" name="plant_name" value="{{ old('plant_name', isset($plant) ? $plant->plant_name : '') }}"
-           placeholder="Plant name">
+    <label for="name_ru">Plant name ru</label>
+    <input type="text" class="form-control @error('name_ru') is-invalid @enderror"
+           id="name_ru" name="name_ru" value="{{ old('name_ru', isset($plant) ? $plant->name_ru : '') }}"
+           placeholder="Plant name ru">
 
-    @error('plant_name')
+    @error('name_ru')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 </div>
 
 <div class="form-group mb-2">
-    <label for="plant_description">Plant description</label>
-    <textarea class="form-control @error('plant_description') is-invalid @enderror"
-              id="plant_description" name="plant_description"
-              placeholder="Plant description">{{ old('plant_description', isset($plant) ? $plant->plant_description : '') }}</textarea>
+    <label for="name_uk">Plant name uk</label>
+    <input type="text" class="form-control @error('name_uk') is-invalid @enderror"
+           id="name_uk" name="name_uk" value="{{ old('name_uk', isset($plant) ? $plant->name_uk : '') }}"
+           placeholder="Plant name uk">
 
-    @error('plant_description')
+    @error('name_uk')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 </div>
 
 <div class="form-group mb-2">
-    <label for="care_rules">Care rules</label>
-    <textarea class="form-control @error('care_rules') is-invalid @enderror"
-              id="care_rules" name="care_rules"
-              placeholder="Care rules">{{ old('care_rules', isset($plant) ? $plant->care_rules : '') }}</textarea>
+    <label for="botanical_name">Botanical name</label>
+    <input type="text" class="form-control @error('botanical_name') is-invalid @enderror"
+           id="botanical_name" name="botanical_name" value="{{ old('botanical_name', isset($plant) ? $plant->botanical_name : '') }}"
+           placeholder="Botanical name">
 
-    @error('care_rules')
+    @error('botanical_name')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="form-group mb-2">
+    <label for="description_ru">Plant description ru</label>
+    <textarea class="form-control @error('description_ru') is-invalid @enderror"
+              id="description_ru" name="description_ru"
+              placeholder="Plant description ru">{{ old('description_ru', isset($plant) ? $plant->description_ru : '') }}</textarea>
+
+    @error('description_ru')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="form-group mb-2">
+    <label for="description_uk">Plant description uk</label>
+    <textarea class="form-control @error('description_uk') is-invalid @enderror"
+              id="description_uk" name="description_uk"
+              placeholder="Plant description uk">{{ old('description_uk', isset($plant) ? $plant->description_uk : '') }}</textarea>
+
+    @error('description_uk')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="form-group mb-2">
+    <label for="care_rules_ru">Care rules ru</label>
+    <textarea class="form-control @error('care_rules_ru') is-invalid @enderror"
+              id="care_rules_ru" name="care_rules_ru"
+              placeholder="Care rules ru">{{ old('care_rules_ru', isset($plant) ? $plant->care_rules_ru : '') }}</textarea>
+
+    @error('care_rules_ru')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="form-group mb-2">
+    <label for="care_rules_uk">Care rules uk</label>
+    <textarea class="form-control @error('care_rules_uk') is-invalid @enderror"
+              id="care_rules_uk" name="care_rules_uk"
+              placeholder="Care rules uk">{{ old('care_rules_uk', isset($plant) ? $plant->care_rules_uk : '') }}</textarea>
+
+    @error('care_rules_uk')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 </div>
@@ -138,56 +171,6 @@
     @error('size')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-</div>
-
-<div class="form-group mb-2">
-    <label for="price">Price</label>
-    <input type="number" class="form-control @error('price') is-invalid @enderror"
-           value="{{ old('price', isset($plant) ? $plant->price : '') }}"
-           id="price" name="price" placeholder="Price">
-
-    @error('price')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
-
-<div class="form-group mb-2">
-    <label for="discount">Discount</label>
-    <input type="number" class="form-control @error('discount') is-invalid @enderror"
-           value="{{ old('discount', isset($plant) ? $plant->discount : '') }}"
-           id="discount" name="discount" placeholder="Discount">
-
-    @error('discount')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
-
-<div class="form-group mb-2">
-    <label for="units_in_stock">Units in stock</label>
-    <input type="number" class="form-control @error('units_in_stock') is-invalid @enderror"
-           value="{{ old('units_in_stock', isset($plant) ? $plant->units_in_stock : '') }}"
-           id="units_in_stock" name="units_in_stock" placeholder="Units in stock">
-
-    @error('units_in_stock')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-</div>
-
-<div class="form-check">
-    <input class="form-check-input" type="checkbox"
-           @if(isset($plant) && $plant->plant_available == 1) checked @endif
-           value="" id="plant_available" name="plant_available">
-    <label class="form-check-label" for="plant_available">
-        Plant available
-    </label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox"
-           @if(isset($plant) && $plant->discount_available == 1) checked @endif
-           value="" id="discount_available" name="discount_available">
-    <label class="form-check-label" for="discount_available">
-        Discount available
-    </label>
 </div>
 
 <p>picture</p>

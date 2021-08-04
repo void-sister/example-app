@@ -10,11 +10,14 @@ class Plant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'SKU',
         'slug',
-        'plant_name',
-        'plant_description',
-        'care_rules',
+        'name_ru',
+        'name_uk',
+        'botanical_name',
+        'description_ru',
+        'description_uk',
+        'care_rules_ru',
+        'care_rules_uk',
         'indoor_light',
         'outdoor_light',
         'air_cleaner',
@@ -22,11 +25,6 @@ class Plant extends Model
         'difficulty',
         'height',
         'size',
-        'price',
-        'discount',
-        'units_in_stock',
-        'plant_available',
-        'discount_available',
         'notes',
     ];
 
@@ -119,19 +117,6 @@ class Plant extends Model
     {
         return $pet_friendly == true;
     }
-
-    /** check plant available */
-    public function isPlantAvailable($plant_available): bool
-    {
-        return $plant_available == true;
-    }
-
-    /** check discount available */
-    public function isDiscountAvailable($discount_available): bool
-    {
-        return $discount_available == true;
-    }
-
 
     /** Scopes */
     public function scopeOfIndoorLightType($query, $type)
