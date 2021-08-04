@@ -33,10 +33,10 @@ Route::get('/plants/{slug}/edit', [PlantController::class, 'edit']);
 Route::put('/plants/{slug}', [PlantController::class, 'update'])->name('plants.update');
 Route::post('/plants/{slug}/archive', [PlantController::class, 'archive'])->name('plants.archive');
 Route::post('/plants/{slug}/return', [PlantController::class, 'return'])->name('plants.return');
-Route::post('/plants/{slug}/add-to-cart', [PlantController::class, 'addToCart'])->name('plants.add-to-cart');
+//Route::post('/plants/{slug}/add-to-cart', [PlantController::class, 'addToCart'])->name('plants.add-to-cart');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+//Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+//Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
+//Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');

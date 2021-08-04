@@ -25,12 +25,14 @@
                 </div>
             </form>
             <br>
+            <?php /*
             <form method="POST" action="{{ route('plants.add-to-cart', ['slug' => $plant->slug, 'qty' => 1]) }}">
                 @csrf
                 <div class="d-grid mt-3">
                     <input type="submit" name="add-to-cart" value="Add to cart" class="btn btn-primary btn-block">
                 </div>
             </form>
+            */ ?>
         @else
             <form method="POST" action="{{ route('plants.return', ['slug' => $plant->slug]) }}">
                 @csrf
