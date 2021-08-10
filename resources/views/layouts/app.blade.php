@@ -15,6 +15,7 @@
     </head>
     <body>
 
+    <?php /*
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-12 main-section">
@@ -55,6 +56,7 @@
             </div>
         </div>
     </div>
+    */ ?>
 
     <br/>
     <div class="container">
