@@ -1,21 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function login()
     {
         return view('auth.login');
     }
-
 
     /**
      * Handle an authentication attempt.
@@ -54,6 +52,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('login');
     }
 }
