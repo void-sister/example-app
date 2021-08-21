@@ -31,8 +31,9 @@
 
         <!-- Main CSS-->
         <link href="{{ asset('/css/theme.css') }}" rel="stylesheet" media="all">
-{{--        <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">--}}
 
+        <!-- Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
 
     </head>
     <body class="animsition">

@@ -184,9 +184,17 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ route('users.index') }}">
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
                         <i class="fa fa-users"></i>Users</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a class="btn-green-link" href="{{ route('users.create') }}">Create user</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.index') }}">List</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
