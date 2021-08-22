@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PermissionController;
 //use App\Http\Controllers\CategoryController;
 //use App\Http\Controllers\PlantController;
 //use App\Http\Controllers\ShopController;
@@ -20,13 +21,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users', UserController::class);
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/users', UserController::class);
+    Route::post('/users/{id}/restore', [UserController::class, 'restore']);
 });
 
 //Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');

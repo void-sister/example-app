@@ -184,6 +184,7 @@
                         </li>
                     </ul>
                 </li>
+                @role('admin')
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fa fa-users"></i>Users</a>
@@ -196,6 +197,7 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
             </ul>
         </nav>
     </div>

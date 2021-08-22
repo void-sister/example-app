@@ -12,6 +12,11 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -119,11 +124,16 @@ class UserController extends Controller
     /**
      * Soft delete the specified resource in storage.
      *
+     * @param Request $request
      * @param int $id
      * @return RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(Request $request, int $id): RedirectResponse
     {
+        if (!$request->user()->can('edit-users')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
         $service = new UserService();
         $deletedId = $service->softDeleteUser($id);
 
@@ -139,11 +149,16 @@ class UserController extends Controller
     /**
      * Restore the specified soft deleted resource in storage.
      *
+     * @param Request $request
      * @param int $id
      * @return RedirectResponse
      */
-    public function restore(int $id): RedirectResponse
+    public function restore(Request $request, int $id): RedirectResponse
     {
+        if (!$request->user()->can('edit-users')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
         $service = new UserService();
         $restoredId = $service->restoreUser($id);
 
