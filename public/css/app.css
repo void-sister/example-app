@@ -4,3 +4,7 @@
 .btn-green-link:hover {
     color: #28a745!important;
 }
+
+.error-block {
+    color: #dc3545;
+}

@@ -4,27 +4,20 @@
     <!-- USER DATA-->
     <div class="user-data m-b-30">
         <h3 class="title-3 m-b-30">
-            <i class="zmdi zmdi-account-calendar"></i>user data</h3>
+            <i class="zmdi zmdi-account-calendar"></i>users data</h3>
         <div class="filters m-b-45">
-            <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+            <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border" style="width: 200px!important;">
                 <select class="js-select2" name="property">
-                    <option selected="selected">All Properties</option>
-                    <option value="">Products</option>
-                    <option value="">Services</option>
-                </select>
-                <div class="dropDownSelect2"></div>
-            </div>
-            <div class="rs-select2--dark rs-select2--sm m-r-10 rs-select2--border">
-                <select class="js-select2 au-select-dark" name="time">
-                    <option selected="selected">All Time</option>
-                    <option value="">By Month</option>
-                    <option value="">By Day</option>
+                    <option>All Roles</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    @endforeach
                 </select>
                 <div class="dropDownSelect2"></div>
             </div>
 
-            <button type="button" class="btn btn-success" style="height: 40px">
-                <a href="{{ route('users.create') }}">Create</a>
+            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i><a href="{{ route('users.create') }}" style="color: white">Create</a>
             </button>
 
         </div>
@@ -40,7 +33,8 @@
                     </td>
                     <td>name</td>
                     <td>role</td>
-                    <td>type</td>
+                    <td>last login</td>
+                    <td>ip</td>
                     <td></td>
                 </tr>
                 </thead>
@@ -62,22 +56,23 @@
                             </div>
                         </td>
                         <td>
-                            <span class="role admin">admin</span>
+                            @foreach($user->roles as $role)
+                                <span class="role {{ $role->slug == 'admin' || $role->slug == 'manager' ? $role->slug : 'user' }}">
+                                    {{ $role->slug }}
+                                </span>
+                            @endforeach
                         </td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <div class="rs-select2--trans rs-select2--sm">
-                                <select class="js-select2" name="property">
-                                    <option selected="selected">Full Control</option>
-                                    <option value="">Post</option>
-                                    <option value="">Watch</option>
-                                </select>
-                                <div class="dropDownSelect2"></div>
+                            <div class="table-data-feature">
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
                             </div>
-                        </td>
-                        <td>
-                            <span class="more">
-                                <i class="zmdi zmdi-more"></i>
-                            </span>
                         </td>
                     </tr>
                     @endforeach

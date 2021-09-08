@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,12 +16,18 @@ class UserService extends BaseService
         return User::where('id', $id)->first();
     }
 
-    public function createUser($params)
+    public function createUser($params): User
     {
-        //TODO if no params (nullable)
-        $params['password'] = Hash::make($params['password']);
+        $role = Role::where('id', $params['role'])->first();
 
-        return User::create($params);
+        $user = new User();
+        $user->name = $params['name'];
+        $user->email = $params['email'];
+        $user->password = Hash::make($params['password']);
+        $user->save();
+        $user->roles()->attach($role);
+
+        return $user;
     }
 
     public function updateUser($params, $id) {
