@@ -19,11 +19,11 @@ class EnsureUserHasRole
     public function handle(Request $request, Closure $next, $role, $permission = null)
     {
         if(!$request->user()->hasRole($role)) {
-            abort(404);
+            abort(403);
         }
 
         if($permission !== null && !$request->user()->can($permission)) {
-            abort(404);
+            abort(403);
         }
 
         return $next($request);
