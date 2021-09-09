@@ -8,7 +8,8 @@
                 <strong>Edit User</strong> Form
             </div>
             <div class="card-body card-block">
-                <form action="{{ route('users.update', ['user' => $user]) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{ route('users.update', ['user' => $user]) }}" id="user-edit-form" method="POST"
+                      enctype="multipart/form-data" class="form-horizontal">
                     @method('PUT')
                     @csrf
 
@@ -25,10 +26,10 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" form="user-edit-form" class="btn btn-primary btn-sm">
                     <i class="fa fa-dot-circle-o"></i> Submit
                 </button>
-                <button type="reset" class="btn btn-danger btn-sm">
+                <button type="reset" form="user-edit-form" class="btn btn-danger btn-sm">
                     <i class="fa fa-ban"></i> Reset
                 </button>
             </div>
