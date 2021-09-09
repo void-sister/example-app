@@ -79,20 +79,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param User $user
-     * @return Application|Factory|View
-     */
-    public function show(User $user)
-    {
-        $service = new UserService();
-        $user = $service->getUserById($user->id);
-
-        return view('users.show', compact('user'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param User $user
