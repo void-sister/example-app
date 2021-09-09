@@ -4,6 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
+                <a type="button" href="{{ url()->previous() }}" class="btn btn-outline-info mr-2">< Back</a>
                 <strong>Edit User</strong> Form
             </div>
             <div class="card-body card-block">
