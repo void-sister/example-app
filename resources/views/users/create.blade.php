@@ -4,6 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
+                <a type="button" href="{{ route('users.index') }}" class="btn btn-outline-info mr-2">< Back</a>
                 <strong>Create User</strong> Form
             </div>
             <div class="card-body card-block">

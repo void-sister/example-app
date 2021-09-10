@@ -30,10 +30,26 @@ class UserService extends BaseService
         return $user;
     }
 
-    public function updateUser($params, $id) {
-        $params['password'] = Hash::make($params['password']);
+    public function updateUser($params, User $user): User
+    {
+        $updatedUser = $user->update([
+            'name' => $params['name'],
+            'email' => $params['email'],
+            'password' => Hash::make($params['password'])
+        ]);
 
-        return User::where('id', $id)->update($params);
+        if(!$updatedUser) {
+            //TODO early return
+        }
+
+        $role = Role::where('id', $params['role'])->first();
+
+        if(!$user->hasRole($role->slug)) {
+            $user->roles()->detach();
+            $user->roles()->attach($role);
+        }
+
+        return $user;
     }
 
     public function softDeleteUser($id) {

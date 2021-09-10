@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -62,7 +63,7 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:users,email|email',
             'password' => ['required', Password::min(8)],
             'role' => 'required|numeric'
         ]);
@@ -109,13 +110,14 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'name' => 'sometimes|string|max:255',
-            'email' => 'sometimes|unique:users,email',
-            'password' => ['sometimes', Password::min(8)],
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user)],
+            'password' => ['required', Password::min(8)], //TODO password not required
+            'role' => 'required|numeric'
         ]);
 
         $service = new UserService();
-        $updatedId = $service->updateUser($request->only('name', 'email', 'password', 'role_id'), $id);
+        $updatedId = $service->updateUser($request->except('_method', '_token'), $user);
 
         if(!$updatedId) {
             return redirect()->back()->with('error', 'User not updated');
