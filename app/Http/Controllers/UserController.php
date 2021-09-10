@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of users.
      *
      * @return Application|Factory|View
      */
@@ -37,7 +37,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @return Application|Factory|View
      */
@@ -50,7 +50,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in storage.
      *
      * @param Request $request
      * @return RedirectResponse
@@ -80,16 +80,13 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified user.
      *
      * @param User $user
      * @return Application|Factory|View
      */
     public function edit(User $user)
     {
-        $userService = new UserService();
-        $user = $userService->getUserById($user->id);
-
         $roleService = new RoleService();
         $roles = $roleService->getRolesList();
 
@@ -97,7 +94,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user in storage.
      *
      * @param Request $request
      * @param User $user
@@ -117,9 +114,9 @@ class UserController extends Controller
         ]);
 
         $service = new UserService();
-        $updatedId = $service->updateUser($request->except('_method', '_token'), $user);
+        $updatedUser = $service->updateUser($request->except('_method', '_token'), $user);
 
-        if(!$updatedId) {
+        if(!$updatedUser) {
             return redirect()->back()->with('error', 'User not updated');
         }
 
@@ -128,7 +125,7 @@ class UserController extends Controller
     }
 
     /**
-     * Soft delete the specified resource in storage.
+     * Soft delete the specified user in storage.
      *
      * @param Request $request
      * @param User $user
@@ -141,9 +138,9 @@ class UserController extends Controller
         }
 
         $service = new UserService();
-        $deletedId = $service->softDeleteUser($user->id);
+        $deletedUser = $service->softDeleteUser($user);
 
-        if(!$deletedId) {
+        if(!$deletedUser) {
             return redirect()->back()->with('error', 'User not soft deleted');
         }
 
@@ -166,9 +163,9 @@ class UserController extends Controller
         }
 
         $service = new UserService();
-        $restoredId = $service->restoreUser($user->id);
+        $restoredUser = $service->restoreUser($user);
 
-        if(!$restoredId) {
+        if(!$restoredUser) {
             return redirect()->back()->with('error', 'User not restored');
         }
 

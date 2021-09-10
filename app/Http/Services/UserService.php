@@ -52,11 +52,13 @@ class UserService extends BaseService
         return $user;
     }
 
-    public function softDeleteUser($id) {
-        return User::where('id', $id)->delete();
+    public function softDeleteUser(User $user): ?bool
+    {
+        return $user->delete();
     }
 
-    public function restoreUser($id) {
-        return User::where('id', $id)->restore();
+    public function restoreUser(User $user): ?bool
+    {
+        return $user->restore();
     }
 }

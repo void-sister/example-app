@@ -69,9 +69,14 @@
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                     <a href="{{ route('users.edit', ['user' => $user]) }}"><i class="zmdi zmdi-edit"></i></a>
                                 </button>
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                    <i class="zmdi zmdi-delete"></i>
-                                </button>
+
+                                <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
