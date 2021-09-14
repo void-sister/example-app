@@ -137,41 +137,63 @@
             <ul class="list-unstyled navbar__list">
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <i class="fa fa-dashboard"></i>Dashboard</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="index.html">Dashboard 1</a>
+                            <a href="#">Overview</a>
                         </li>
                         <li>
-                            <a href="index2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="index3.html">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.html">Dashboard 4</a>
+                            <a href="#">Statistic</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
-                </li>
-                <li>
-                    <a href="table.html">
-                        <i class="fas fa-table"></i>Tables</a>
-                </li>
-                <li>
-                    <a href="form.html">
-                        <i class="far fa-check-square"></i>Forms</a>
+                    <a href="#">
+                        <i class="fa fa-check-square-o"></i>Tasks</a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        <i class="fa fa-money"></i>Orders</a>
                 </li>
-                <li>
-                    <a href="map.html">
-                        <i class="fas fa-map-marker-alt"></i>Maps</a>
+
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fa fa-smile-o"></i>Customers</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="#">List</a>
+                        </li>
+                        <li>
+                            <a href="#">Loyalty</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fa fa-star-o"></i>Products</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="#">Plants</a>
+                        </li>
+                        <li>
+                            <a href="#">Pots</a>
+                        </li>
+                        <li>
+                            <a href="#">Soil</a>
+                        </li>
+                        <li>
+                            <a href="#">Accessories</a>
+                        </li>
+                        <li>
+                            <a href="#">Tech</a>
+                        </li>
+                        <li>
+                            <a href="#">Bouquets</a>
+                        </li>
+                        <li>
+                            <a href="#">For florists</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
@@ -183,9 +205,30 @@
                         <li>
                             <a href="{{ route('plants.index') }}">List</a>
                         </li>
+                        <li>
+                            <a href="#">Archive</a>
+                        </li>
                     </ul>
                 </li>
-
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fa fa-align-left"></i>Posts</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="#">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">Knowledge Base</a>
+                        </li>
+                        <li>
+                            <a href="#">Care guides</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>Calendar</a>
+                </li>
                 @role('admin')
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
