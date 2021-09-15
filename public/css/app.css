@@ -8,3 +8,10 @@
 .error-block {
     color: #dc3545;
 }
+
+.header-mobile .header-mobile__bar {
+    padding-top: 0!important;
+}
+.logo-img {
+    max-width: 60%!important;
+}
