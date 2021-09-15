@@ -205,9 +205,6 @@
                         <li>
                             <a href="{{ route('plants.index') }}">List</a>
                         </li>
-                        <li>
-                            <a href="#">Archive</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -239,6 +236,9 @@
                         </li>
                         <li>
                             <a href="{{ route('users.index') }}">List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.trashed') }}">Archive</a>
                         </li>
                         <li>
                             <a href="#">Roles</a>

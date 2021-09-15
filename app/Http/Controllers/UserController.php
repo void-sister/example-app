@@ -141,16 +141,32 @@ class UserController extends Controller
         $deletedUser = $service->softDeleteUser($user);
 
         if(!$deletedUser) {
-            return redirect()->back()->with('error', 'User not soft deleted');
+            return redirect()->back()->with('error', 'User not trashed');
         }
 
         return redirect()->route('users.index')
-            ->with('success', 'User soft deleted successfully');
+            ->with('success', 'User trashed successfully');
 
     }
 
     /**
-     * Restore the specified soft deleted resource in storage.
+     * Display a listing of trashed users.
+     *
+     * @return Application|Factory|View
+     */
+    public function trashed()
+    {
+        $userService = new UserService();
+        $users = $userService->getTrashedUsers();
+
+        $roleService = new RoleService();
+        $roles = $roleService->getRolesList();
+
+        return view('users.trashed', compact(['users', 'roles']));
+    }
+
+    /**
+     * Restore the specified trashed user in storage.
      *
      * @param Request $request
      * @param User $user
@@ -169,7 +185,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'User not restored');
         }
 
-        return redirect()->route('users.index')
+        return redirect()->route('users.trashed')
             ->with('success', 'User restored successfully');
     }
 
@@ -193,7 +209,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'User not destroyed');
         }
 
-        return redirect()->route('users.index')
+        return redirect()->route('users.trashed')
             ->with('success', 'User destroyed successfully');
 
     }

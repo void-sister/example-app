@@ -12,6 +12,10 @@ class UserService extends BaseService
         return User::all();
     }
 
+    public function getTrashedUsers() {
+        return User::onlyTrashed()->get();
+    }
+
     public function createUser($params): User
     {
         $role = Role::where('id', $params['role'])->first();
@@ -50,6 +54,7 @@ class UserService extends BaseService
 
     public function softDeleteUser(User $user): ?bool
     {
+        //TODO delete role ?
         return $user->delete();
     }
 
