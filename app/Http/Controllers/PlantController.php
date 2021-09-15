@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\PlantService;
+use App\Models\Plant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show plants list.
      *
@@ -17,11 +23,9 @@ class PlantController extends Controller
     public function index(): View
     {
         $service = new PlantService();
-        $plants = $service->getListForAdmin();
+        $plants = $service->getList();
 
-        return view('plants.index', [
-            'plants' => $plants
-        ]);
+        return view('plants.index', compact(['plants']));
     }
 
     /**
@@ -42,6 +46,10 @@ class PlantController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if (!$request->user()->can('create-plants')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
         $request->validate([
             'slug' => 'required|unique:plants|max:255',
             'name_ru' => 'required|string|max:255',
@@ -53,9 +61,9 @@ class PlantController extends Controller
         ]);
 
         $service = new PlantService();
-        $created = $service->createPlant($request->all());
+        $createdPlant = $service->createPlant($request->except('_token'));
 
-        if(!$created) {
+        if(!$createdPlant) {
             return redirect()->back()->with('error', 'Plant not created');
         }
 
@@ -66,44 +74,38 @@ class PlantController extends Controller
     /**
      * Display the specified plant.
      *
-     * @param string $slug
+     * @param Plant $plant
      * @return View
      */
-    public function show(string $slug): View
+    public function show(Plant $plant): View
     {
-        $service = new PlantService();
-        $plant = $service->getPlantBySlug($slug);
-
-        return view('plants.show', [
-            'plant' => $plant
-        ]);
+        return view('plants.show', compact(['plant']));
     }
 
     /**
      * Show the form for editing the specified plant.
      *
-     * @param string $slug
+     * @param Plant $plant
      * @return View
      */
-    public function edit(string $slug): View
+    public function edit(Plant $plant): View
     {
-        $service = new PlantService();
-        $plant = $service->getPlantBySlug($slug);
-
-        return view('plants.edit', [
-            'plant' => $plant
-        ]);
+        return view('plants.edit', compact(['plant']));
     }
 
     /**
      * Update the specified plant in storage.
      *
      * @param Request $request
-     * @param string $slug
+     * @param Plant $plant
      * @return RedirectResponse
      */
-    public function update(Request $request, string $slug): RedirectResponse
+    public function update(Request $request, Plant $plant): RedirectResponse
     {
+        if (!$request->user()->can('edit-plants')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
         $request->validate([
             'slug' => 'required|unique:plants|max:255',
             'name_ru' => 'required|string|max:255',
@@ -115,9 +117,9 @@ class PlantController extends Controller
         ]);
 
         $service = new PlantService();
-        $id = $service->updatePlant($request->all(), $slug);
+        $updatedPlant = $service->updatePlant($request->except('_method', '_token'), $plant);
 
-        if(!$id) {
+        if(!$updatedPlant) {
             return redirect()->back()->with('error', 'Plant not updated');
         }
 
@@ -128,15 +130,20 @@ class PlantController extends Controller
     /**
      * Archive the specified plant.
      *
-     * @param string $slug
+     * @param Request $request
+     * @param Plant $plant
      * @return RedirectResponse
      */
-    public function archive(string $slug): RedirectResponse
+    public function archive(Request $request, Plant $plant): RedirectResponse
     {
-        $service = new PlantService();
-        $id = $service->archive($slug);
+        if (!$request->user()->can('archive-plants')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
 
-        if(!$id) {
+        $service = new PlantService();
+        $archivedPlant = $service->archive($plant);
+
+        if(!$archivedPlant) {
             return redirect()->back()->with('error', 'Plant not archived');
         }
 
@@ -147,13 +154,18 @@ class PlantController extends Controller
     /**
      * Return from archive specified plant.
      *
-     * @param string $slug
+     * @param Request $request
+     * @param Plant $plant
      * @return RedirectResponse
      */
-    public function return(string $slug): RedirectResponse
+    public function return(Request $request, Plant $plant): RedirectResponse
     {
+        if (!$request->user()->can('return-plants')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
         $service = new PlantService();
-        $id = $service->returnFromArchive($slug);
+        $id = $service->returnFromArchive($plant);
 
         if(!$id) {
             return redirect()->back()->with('error', 'Plant not returned from archive');
