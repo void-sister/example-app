@@ -244,7 +244,7 @@
                             <a href="#">Roles</a>
                         </li>
                         <li>
-                            <a href="#">Permissions</a>
+                            <a href="{{ route('permissions.index') }}">Permissions</a>
                         </li>
                     </ul>
                 </li>

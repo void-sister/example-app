@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 //use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PlantController;
 //use App\Http\Controllers\ShopController;
 //use App\Http\Controllers\CartController;
@@ -34,6 +35,8 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('plants', PlantController::class);
     Route::post('/plants/{plant}/archive', [PlantController::class, 'archive'])->name('plants.archive');
     Route::post('/plants/{plant}/return', [PlantController::class, 'return'])->name('plants.return');
+
+    Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
 });
 
 
