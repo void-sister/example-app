@@ -26,6 +26,7 @@ class Plant extends Model
         'height',
         'size',
         'notes',
+        'is_archived',
     ];
 
     const INDOOR_LIGHT_LOW = 1;

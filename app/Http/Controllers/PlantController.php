@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\PlantService;
+use App\Models\Plant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show plants list.
      *
@@ -17,11 +23,9 @@ class PlantController extends Controller
     public function index(): View
     {
         $service = new PlantService();
-        $plants = $service->getListForAdmin();
+        $plants = $service->getList();
 
-        return view('plants.index', [
-            'plants' => $plants
-        ]);
+        return view('plants.index', compact(['plants']));
     }
 
     /**

@@ -7,7 +7,7 @@ use App\Models\PlantSearch;
 
 class PlantService extends BaseService
 {
-    public function getListForAdmin() {
+    public function getList() {
         return Plant::all();
     }
 
