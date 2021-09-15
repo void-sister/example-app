@@ -33,7 +33,7 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::get('/users/archive', [UserController::class, 'trashed'])->name('users.trashed');
 
-    Route::resource('plants', PlantController::class);
+    Route::resource('plants', PlantController::class)->except(['destroy']);
     Route::post('/plants/{plant}/archive', [PlantController::class, 'archive'])->name('plants.archive');
     Route::post('/plants/{plant}/return', [PlantController::class, 'return'])->name('plants.return');
 

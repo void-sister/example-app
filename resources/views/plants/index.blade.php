@@ -71,9 +71,12 @@
                             <td>{{ $plant->notes }}</td>
                             <td>
                                 <div class="table-data-feature">
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </button>
+                                    @if(!$plant->is_archived)
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <a href="{{ route('plants.edit', ['plant' => $plant]) }}"><i class="zmdi zmdi-edit"></i></a>
+                                        </button>
+                                    @endif
+
                                     <div style="margin-right: 5px;">
                                         @if(!$plant->is_archived)
                                             <form method="POST" action="{{ route('plants.archive', ['plant' => $plant]) }}">

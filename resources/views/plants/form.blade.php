@@ -1,191 +1,281 @@
-<div class="form-group mb-2">
-    <label for="slug">Slug</label>
-    <input type="text" class="form-control @error('slug') is-invalid @enderror"
-           id="slug" name="slug" value="{{ old('slug', isset($plant) ? $plant->slug : '') }}"
-           aria-describedby="slugHelp" placeholder="Enter slug">
+{{--Slug--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="slug" class=" form-control-label">Slug</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="text" id="slug" name="slug" placeholder="Enter Slug"
+               value="{{ old('slug', isset($plant) ? $plant->slug : '') }}"
+               aria-describedby="slugHelp"
+               class="form-control @error('slug') is-invalid @enderror">
+        @error('slug')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
 
-    @error('slug')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-
-    <small id="slugHelp" class="form-text text-muted">Slug in english</small>
+        <small id="slugHelp" class="form-text text-muted">Slug in english</small>
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="name_ru">Plant name ru</label>
-    <input type="text" class="form-control @error('name_ru') is-invalid @enderror"
-           id="name_ru" name="name_ru" value="{{ old('name_ru', isset($plant) ? $plant->name_ru : '') }}"
-           placeholder="Plant name ru">
-
-    @error('name_ru')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Name RU--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="name_ru" class=" form-control-label">Plant name ru</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="text" id="name_ru" name="name_ru" placeholder="Plant name ru"
+               value="{{ old('name_ru', isset($plant) ? $plant->name_ru : '') }}"
+               class="form-control @error('name_ru') is-invalid @enderror">
+        @error('name_ru')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="name_uk">Plant name uk</label>
-    <input type="text" class="form-control @error('name_uk') is-invalid @enderror"
-           id="name_uk" name="name_uk" value="{{ old('name_uk', isset($plant) ? $plant->name_uk : '') }}"
-           placeholder="Plant name uk">
-
-    @error('name_uk')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Name UK--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="name_uk" class=" form-control-label">Plant name uk</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="text" id="name_uk" name="name_uk" placeholder="Plant name uk"
+               value="{{ old('name_uk', isset($plant) ? $plant->name_uk : '') }}"
+               class="form-control @error('name_uk') is-invalid @enderror">
+        @error('name_uk')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="botanical_name">Botanical name</label>
-    <input type="text" class="form-control @error('botanical_name') is-invalid @enderror"
-           id="botanical_name" name="botanical_name" value="{{ old('botanical_name', isset($plant) ? $plant->botanical_name : '') }}"
-           placeholder="Botanical name">
-
-    @error('botanical_name')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Botanical name--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="botanical_name" class=" form-control-label">Botanical name</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="text" id="botanical_name" name="botanical_name" placeholder="Botanical name"
+               value="{{ old('botanical_name', isset($plant) ? $plant->botanical_name : '') }}"
+               class="form-control @error('botanical_name') is-invalid @enderror">
+        @error('botanical_name')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="description_ru">Plant description ru</label>
-    <textarea class="form-control @error('description_ru') is-invalid @enderror"
-              id="description_ru" name="description_ru"
-              placeholder="Plant description ru">{{ old('description_ru', isset($plant) ? $plant->description_ru : '') }}</textarea>
-
-    @error('description_ru')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Description ru--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="description_ru" class=" form-control-label">Description ru</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <textarea name="description_ru" id="description_ru" rows="9" placeholder="Description ru"
+                  class="form-control @error('description_ru') is-invalid @enderror">
+            {{ old('description_ru', isset($plant) ? $plant->description_ru : '') }}
+        </textarea>
+        @error('description_ru')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="description_uk">Plant description uk</label>
-    <textarea class="form-control @error('description_uk') is-invalid @enderror"
-              id="description_uk" name="description_uk"
-              placeholder="Plant description uk">{{ old('description_uk', isset($plant) ? $plant->description_uk : '') }}</textarea>
-
-    @error('description_uk')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Description uk--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="description_uk" class=" form-control-label">Description uk</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <textarea name="description_uk" id="description_uk" rows="9" placeholder="Description uk"
+                  class="form-control @error('description_uk') is-invalid @enderror">
+            {{ old('description_uk', isset($plant) ? $plant->description_uk : '') }}
+        </textarea>
+        @error('description_uk')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="care_rules_ru">Care rules ru</label>
-    <textarea class="form-control @error('care_rules_ru') is-invalid @enderror"
-              id="care_rules_ru" name="care_rules_ru"
-              placeholder="Care rules ru">{{ old('care_rules_ru', isset($plant) ? $plant->care_rules_ru : '') }}</textarea>
-
-    @error('care_rules_ru')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Care rules ru--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="care_rules_ru" class=" form-control-label">Care rules ru</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <textarea name="care_rules_ru" id="care_rules_ru" rows="9" placeholder="Care rules ru"
+                  class="form-control @error('care_rules_ru') is-invalid @enderror">
+            {{ old('care_rules_ru', isset($plant) ? $plant->care_rules_ru : '') }}
+        </textarea>
+        @error('care_rules_ru')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="care_rules_uk">Care rules uk</label>
-    <textarea class="form-control @error('care_rules_uk') is-invalid @enderror"
-              id="care_rules_uk" name="care_rules_uk"
-              placeholder="Care rules uk">{{ old('care_rules_uk', isset($plant) ? $plant->care_rules_uk : '') }}</textarea>
-
-    @error('care_rules_uk')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Care rules uk--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="care_rules_uk" class=" form-control-label">Care rules uk</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <textarea name="care_rules_uk" id="care_rules_uk" rows="9" placeholder="Care rules uk"
+                  class="form-control @error('care_rules_uk') is-invalid @enderror">
+            {{ old('care_rules_uk', isset($plant) ? $plant->care_rules_uk : '') }}
+        </textarea>
+        @error('care_rules_uk')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="size">Indoor light</label>
-    <select class="form-control @error('indoor_light') is-invalid @enderror" name="indoor_light" id="indoor_light">
-        <option value="">Select indoor light</option>
-        @foreach(\App\Models\Plant::getIndoorLightTypes() as $key => $type)
-            <option @if(isset($plant) && $plant->indoor_light == $key) selected @endif value="{{ $key }}">{{ $type }}</option>
-        @endforeach
-    </select>
-
-    @error('indoor_light')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Indoor light--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="indoor_light" class=" form-control-label">Indoor light</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <select name="indoor_light" id="indoor_light" class="form-control @error('indoor_light') is-invalid @enderror">
+            <option>Select indoor light</option>
+            @foreach(\App\Models\Plant::getIndoorLightTypes() as $key => $type)
+                <option value="{{ $key }}"
+                        @if(isset($plant) && $plant->indoor_light == $key) selected @endif>
+                    {{ $type }}
+                </option>
+            @endforeach
+        </select>
+        @error('indoor_light')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="size">Outdoor light</label>
-    <select class="form-control @error('outdoor_light') is-invalid @enderror" name="outdoor_light" id="outdoor_light">
-        <option value="">Select outdoor light</option>
-        @foreach(\App\Models\Plant::getOutdoorLightTypes() as $key => $type)
-            <option @if(isset($plant) && $plant->outdoor_light == $key) selected @endif value="{{ $key }}">{{ $type }}</option>
-        @endforeach
-    </select>
-
-    @error('outdoor_light')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Outdoor light--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="outdoor_light" class=" form-control-label">Outdoor light</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <select name="outdoor_light" id="outdoor_light" class="form-control @error('outdoor_light') is-invalid @enderror">
+            <option>Select outdoor light</option>
+            @foreach(\App\Models\Plant::getOutdoorLightTypes() as $key => $type)
+                <option value="{{ $key }}"
+                        @if(isset($plant) && $plant->outdoor_light == $key) selected @endif>
+                    {{ $type }}
+                </option>
+            @endforeach
+        </select>
+        @error('outdoor_light')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-check">
-    <input class="form-check-input" type="checkbox"
-           @if(isset($plant) && $plant->air_cleaner == 1) checked @endif
-           value="" id="air_cleaner" name="air_cleaner">
-    <label class="form-check-label" for="air_cleaner">
-        Air cleaner
-    </label>
+{{--Air Cleaner--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="air_cleaner" class=" form-control-label">Air cleaner</label>
+    </div>
+    <div class="col col-md-9">
+        <div class="form-check">
+            <div class="checkbox">
+                <input type="checkbox" @if(isset($plant) && $plant->air_cleaner == 1) checked @endif
+                       id="air_cleaner" name="air_cleaner" value="" class="form-check-input">
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-check">
-    <input class="form-check-input" type="checkbox"
-           @if(isset($plant) && $plant->pet_friendly == 1) checked @endif
-           value="" id="pet_friendly" name="pet_friendly">
-    <label class="form-check-label" for="pet_friendly">
-        Pet friendly
-    </label>
+{{--Pet friendly--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="pet_friendly" class=" form-control-label">Pet friendly</label>
+    </div>
+    <div class="col col-md-9">
+        <div class="form-check">
+            <div class="checkbox">
+                <input type="checkbox" @if(isset($plant) && $plant->pet_friendly == 1) checked @endif
+                id="pet_friendly" name="pet_friendly" value="" class="form-check-input">
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="size">Difficulty</label>
-    <select class="form-control @error('difficulty') is-invalid @enderror" name="difficulty" id="difficulty">
-        <option value="">Select difficulty</option>
-        @foreach(\App\Models\Plant::getDifficultyTypes() as $key => $type)
-            <option @if(isset($plant) && $plant->difficulty == $key) selected @endif value="{{ $key }}">{{ $type }}</option>
-        @endforeach
-    </select>
-
-    @error('difficulty')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Difficulty--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="difficulty" class=" form-control-label">Difficulty</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <select name="difficulty" id="difficulty" class="form-control @error('difficulty') is-invalid @enderror">
+            <option>Select difficulty</option>
+            @foreach(\App\Models\Plant::getDifficultyTypes() as $key => $type)
+                <option value="{{ $key }}"
+                        @if(isset($plant) && $plant->difficulty == $key) selected @endif>
+                    {{ $type }}
+                </option>
+            @endforeach
+        </select>
+        @error('difficulty')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="height">Height</label>
-    <input type="number" class="form-control @error('height') is-invalid @enderror"
-           value="{{ old('height', isset($plant) ? $plant->height : '') }}"
-           id="height" name="height" placeholder="Height">
-
-    @error('height')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Height--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="height" class=" form-control-label">Height</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="number" id="height" name="height" placeholder="Height"
+               value="{{ old('height', isset($plant) ? $plant->height : '') }}"
+               class="form-control @error('height') is-invalid @enderror">
+        @error('height')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<div class="form-group mb-2">
-    <label for="size">Size</label>
-    <select class="form-control @error('size') is-invalid @enderror" name="size" id="size">
-        <option value="">Select size</option>
-        @foreach(\App\Models\Plant::getSizes() as $key => $size)
-            <option @if(isset($plant) && $plant->size == $key) selected @endif value="{{ $key }}"> {{ $size }}</option>
-        @endforeach
-    </select>
-
-    @error('size')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Size--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="size" class=" form-control-label">Size</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <select name="size" id="size" class="form-control @error('size') is-invalid @enderror">
+            <option>Select size</option>
+            @foreach(\App\Models\Plant::getSizes() as $key => $type)
+                <option value="{{ $key }}"
+                        @if(isset($plant) && $plant->size == $key) selected @endif>
+                    {{ $type }}
+                </option>
+            @endforeach
+        </select>
+        @error('size')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>
 
-<p>picture</p>
-
-<div class="form-group mb-2">
-    <label for="plant_description">Notes</label>
-    <textarea class="form-control @error('notes') is-invalid @enderror"
-              id="notes" name="notes"
-              placeholder="Notes">{{ old('notes', isset($plant) ? $plant->notes : '') }}</textarea>
-
-    @error('notes')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+{{--Pictures--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="pictures" class=" form-control-label">Pictures</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="file" id="pictures" name="pictures" multiple="" class="form-control-file">
+    </div>
 </div>
 
-<div class="d-grid mt-3">
-    <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+{{--Notes--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="notes" class=" form-control-label">Notes</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <textarea name="notes" id="notes" rows="6" placeholder="Notes"
+                  class="form-control @error('notes') is-invalid @enderror">
+            {{ old('notes', isset($plant) ? $plant->notes : '') }}
+        </textarea>
+        @error('notes')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
 </div>

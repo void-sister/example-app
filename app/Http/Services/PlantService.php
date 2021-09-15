@@ -8,7 +8,7 @@ use App\Models\PlantSearch;
 class PlantService extends BaseService
 {
     public function getList() {
-        return Plant::all();
+        return Plant::orderBy('is_archived')->get(); //TODO order active first
     }
 
     public function getListForClient($params) {
@@ -127,11 +127,6 @@ class PlantService extends BaseService
         return $plant->update([
             'is_archived' => false,
         ]);
-    }
-
-    public function deletePlant(Plant $plant): ?bool
-    {
-        return $plant->delete();
     }
 
     public function addToCart($slug, $qty): bool

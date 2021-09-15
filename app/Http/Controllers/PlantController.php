@@ -176,31 +176,6 @@ class PlantController extends Controller
     }
 
     /**
-     * Delete the specified plant in storage.
-     *
-     * @param Request $request
-     * @param Plant $plant
-     * @return RedirectResponse
-     */
-    public function destroy(Request $request, Plant $plant): RedirectResponse
-    {
-        if (!$request->user()->can('delete-plants')) {
-            return redirect()->back()->with('error', 'You are not authorized to do this task');
-        }
-
-        $service = new PlantService();
-        $deletedPlant = $service->deletePlant($plant);
-
-        if(!$deletedPlant) {
-            return redirect()->back()->with('error', 'Plant not deleted');
-        }
-
-        return redirect()->route('plants.index')
-            ->with('success', 'Plant deleted successfully');
-
-    }
-
-    /**
      * Add to cart specified plant.
      *
      * @param string $slug
