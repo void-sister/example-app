@@ -46,7 +46,7 @@ class PlantController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if (!$request->user()->can('create-plants')) { //TODO permissioin
+        if (!$request->user()->can('create-plants')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
@@ -102,7 +102,7 @@ class PlantController extends Controller
      */
     public function update(Request $request, Plant $plant): RedirectResponse
     {
-        if (!$request->user()->can('edit-plants')) { //TODO permissioin
+        if (!$request->user()->can('edit-plants')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
@@ -136,7 +136,7 @@ class PlantController extends Controller
      */
     public function archive(Request $request, Plant $plant): RedirectResponse
     {
-        if (!$request->user()->can('archive-plants')) { //TODO permission
+        if (!$request->user()->can('archive-plants')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
@@ -160,7 +160,7 @@ class PlantController extends Controller
      */
     public function return(Request $request, Plant $plant): RedirectResponse
     {
-        if (!$request->user()->can('return-plants')) { //TODO permission
+        if (!$request->user()->can('return-plants')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
