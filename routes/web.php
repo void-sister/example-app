@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 //use App\Http\Controllers\CategoryController;
-//use App\Http\Controllers\PlantController;
+use App\Http\Controllers\PlantController;
 //use App\Http\Controllers\ShopController;
 //use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
@@ -28,7 +28,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('users', UserController::class)->except(['show']);
-    Route::post('/users/{user}/restore', [UserController::class, 'restore']);
+    Route::post('/users/{user}/soft-delete', [UserController::class, 'softDelete'])->name('users.soft-delete');
+    Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
 });
 
 //Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');

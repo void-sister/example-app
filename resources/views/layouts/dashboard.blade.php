@@ -158,7 +158,7 @@
 
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fa fa-smile-o"></i>Customers</a>
+                        <i class="fa fa-users"></i>Customers</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a href="#">List</a>
@@ -232,7 +232,7 @@
                 @role('admin')
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fa fa-users"></i>Users</a>
+                        <i class="zmdi zmdi-account-calendar"></i>Users</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a class="btn-green-link" href="{{ route('users.create') }}">Create user</a>

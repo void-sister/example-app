@@ -70,13 +70,14 @@
                                     <a href="{{ route('users.edit', ['user' => $user]) }}"><i class="zmdi zmdi-edit"></i></a>
                                 </button>
 
-                                <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
-                                    @method('DELETE')
+                                @role('admin')
+                                <form method="POST" action="{{ route('users.soft-delete', ['user' => $user]) }}">
                                     @csrf
                                     <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <i class="zmdi zmdi-delete"></i>
                                     </button>
                                 </form>
+                                @endrole
                             </div>
                         </td>
                     </tr>

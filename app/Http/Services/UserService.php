@@ -12,10 +12,6 @@ class UserService extends BaseService
         return User::all();
     }
 
-    public function getUserById($id) {
-        return User::where('id', $id)->first();
-    }
-
     public function createUser($params): User
     {
         $role = Role::where('id', $params['role'])->first();
@@ -30,7 +26,7 @@ class UserService extends BaseService
         return $user;
     }
 
-    public function updateUser($params, User $user): User
+    public function updateUser($params, User $user): bool
     {
         $updatedUser = $user->update([
             'name' => $params['name'],
@@ -49,7 +45,7 @@ class UserService extends BaseService
             $user->roles()->attach($role);
         }
 
-        return $user;
+        return $updatedUser;
     }
 
     public function softDeleteUser(User $user): ?bool
@@ -60,5 +56,10 @@ class UserService extends BaseService
     public function restoreUser(User $user): ?bool
     {
         return $user->restore();
+    }
+
+    public function forceDeleteUser(User $user): ?bool
+    {
+        return $user->forceDelete();
     }
 }

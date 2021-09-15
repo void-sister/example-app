@@ -131,7 +131,7 @@ class UserController extends Controller
      * @param User $user
      * @return RedirectResponse
      */
-    public function destroy(Request $request, User $user): RedirectResponse
+    public function softDelete(Request $request, User $user): RedirectResponse
     {
         if (!$request->user()->can('delete-users')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
@@ -158,7 +158,7 @@ class UserController extends Controller
      */
     public function restore(Request $request, User $user): RedirectResponse
     {
-        if (!$request->user()->can('edit-users')) {
+        if (!$request->user()->can('restore-users')) { //TODO permission
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
@@ -171,5 +171,30 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User restored successfully');
+    }
+
+    /**
+     * Force delete the specified user in storage.
+     *
+     * @param Request $request
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function destroy(Request $request, User $user): RedirectResponse
+    {
+        if (!$request->user()->can('delete-users')) {
+            return redirect()->back()->with('error', 'You are not authorized to do this task');
+        }
+
+        $service = new UserService();
+        $deletedUser = $service->forceDeleteUser($user);
+
+        if(!$deletedUser) {
+            return redirect()->back()->with('error', 'User not destroyed');
+        }
+
+        return redirect()->route('users.index')
+            ->with('success', 'User destroyed successfully');
+
     }
 }
