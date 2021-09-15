@@ -158,7 +158,7 @@ class UserController extends Controller
      */
     public function restore(Request $request, User $user): RedirectResponse
     {
-        if (!$request->user()->can('restore-users')) { //TODO permission
+        if (!$request->user()->can('restore-users')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
