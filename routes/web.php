@@ -30,16 +30,13 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('users', UserController::class)->except(['show']);
     Route::post('/users/{user}/soft-delete', [UserController::class, 'softDelete'])->name('users.soft-delete');
     Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+
+    Route::resource('plants', PlantController::class);
+    Route::post('/plants/{plant}/archive', [PlantController::class, 'archive'])->name('plants.archive');
+    Route::post('/plants/{plant}/return', [PlantController::class, 'return'])->name('plants.return');
 });
 
-//Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');
-//Route::get('/plants/create', [PlantController::class, 'create']);
-//Route::post('/plants', [PlantController::class, 'store'])->name('plants.store');
-//Route::get('/plants/{slug}', [PlantController::class, 'show']);
-//Route::get('/plants/{slug}/edit', [PlantController::class, 'edit']);
-//Route::put('/plants/{slug}', [PlantController::class, 'update'])->name('plants.update');
-//Route::post('/plants/{slug}/archive', [PlantController::class, 'archive'])->name('plants.archive');
-//Route::post('/plants/{slug}/return', [PlantController::class, 'return'])->name('plants.return');
+
 //Route::post('/plants/{slug}/add-to-cart', [PlantController::class, 'addToCart'])->name('plants.add-to-cart');
 
 //Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');

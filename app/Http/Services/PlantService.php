@@ -63,10 +63,6 @@ class PlantService extends BaseService
         }
     }
 
-    public function getPlantBySlug($slug) {
-        return Plant::where('slug', $slug)->first();
-    }
-
     public function createPlant($params)
     {
         //TODO if no params (nullable)
@@ -91,8 +87,9 @@ class PlantService extends BaseService
         ]);
     }
 
-    public function updatePlant($params, $slug) {
-        return Plant::where('slug', $slug)->update([
+    public function updatePlant($params, Plant $plant): bool
+    {
+        $updatedPlant = $plant->update([
             'slug' => $params['slug'],
             'name_ru' => $params['name_ru'],
             'name_uk' => $params['name_uk'],
@@ -110,18 +107,31 @@ class PlantService extends BaseService
             'size' => $params['size'],
             'notes' => $params['notes']
         ]);
+
+        if(!$updatedPlant) {
+            //TODO early return
+        }
+
+        return $updatedPlant;
     }
 
-    public function archive($slug) {
-        return Plant::where('slug', $slug)->update([
+    public function archive(Plant $plant): bool
+    {
+        return $plant->update([
             'is_archived' => true,
         ]);
     }
 
-    public function returnFromArchive($slug) {
-        return Plant::where('slug', $slug)->update([
+    public function returnFromArchive(Plant $plant): bool
+    {
+        return $plant->update([
             'is_archived' => false,
         ]);
+    }
+
+    public function deletePlant(Plant $plant): ?bool
+    {
+        return $plant->delete();
     }
 
     public function addToCart($slug, $qty): bool
