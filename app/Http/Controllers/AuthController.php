@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+
+        return redirect()->route('dashboard');
+    }
+
     public function login()
     {
         return view('auth.login');
