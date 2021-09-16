@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Users list')
+
 @section('dashboard')
     <div class="user-data m-b-30">
         {{--Header--}}

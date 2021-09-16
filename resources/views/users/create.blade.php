@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Create user')
+
 @section('dashboard')
     <div class="col-lg-12">
         <div class="card">

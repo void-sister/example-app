@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Trashed users')
+
 @section('dashboard')
     <!-- USER DATA-->
     <div class="user-data m-b-30">

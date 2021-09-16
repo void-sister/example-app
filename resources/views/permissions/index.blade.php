@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Permissions')
+
 @section('dashboard')
 
 <div class="row">
