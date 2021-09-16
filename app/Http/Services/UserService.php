@@ -58,13 +58,13 @@ class UserService extends BaseService
         return $user->delete();
     }
 
-    public function restoreUser(User $user): ?bool
+    public function restoreUser($id): ?bool
     {
-        return $user->restore();
+        return User::withTrashed()->find($id)->restore();
     }
 
-    public function forceDeleteUser(User $user): ?bool
+    public function forceDeleteUser($id): ?bool
     {
-        return $user->forceDelete();
+        return User::withTrashed()->find($id)->forceDelete();
     }
 }
