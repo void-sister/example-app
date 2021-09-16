@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Trashed users')
+
 @section('dashboard')
     <!-- USER DATA-->
     <div class="user-data m-b-30">
@@ -60,7 +62,7 @@
                         <td>{{ $user->deleted_at }}</td>
                         <td>
                             <div class="table-data-feature">
-                                <form method="POST" action="{{ route('users.restore', ['user' => $user]) }}" style="margin-right: 5px">
+                                <form method="POST" action="{{ route('users.restore', ['id' => $user->id]) }}" style="margin-right: 5px">
                                     @csrf
                                     <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Restore">
                                         <i class="fa fa-reply"></i>

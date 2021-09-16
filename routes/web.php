@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [AuthController::class, 'index']);
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
@@ -30,7 +32,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('users', UserController::class)->except(['show']);
     Route::post('/users/{user}/soft-delete', [UserController::class, 'softDelete'])->name('users.soft-delete');
-    Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+    Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::get('/users/archive', [UserController::class, 'trashed'])->name('users.trashed');
 
     Route::resource('plants', PlantController::class)->except(['destroy']);

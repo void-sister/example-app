@@ -1,10 +1,15 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Users list')
+
 @section('dashboard')
-    <!-- USER DATA-->
     <div class="user-data m-b-30">
+        {{--Header--}}
         <h3 class="title-3 m-b-30">
-            <i class="zmdi zmdi-account-calendar"></i>users data</h3>
+            <i class="zmdi zmdi-account-calendar"></i>users data
+        </h3>
+
+        {{--Filters--}}
         <div class="filters m-b-45">
             <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border" style="width: 200px!important;">
                 <select class="js-select2" name="property">
@@ -19,8 +24,9 @@
             <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                 <i class="zmdi zmdi-plus"></i><a href="{{ route('users.create') }}" style="color: white">Create</a>
             </button>
-
         </div>
+
+        {{--Table--}}
         <div class="table-responsive table-data">
             <table class="table">
                 <thead>
@@ -85,9 +91,10 @@
                 </tbody>
             </table>
         </div>
+
+        {{--Load more--}}
         <div class="user-data__footer">
             <button class="au-btn au-btn-load">load more</button>
         </div>
     </div>
-    <!-- END USER DATA-->
 @endsection

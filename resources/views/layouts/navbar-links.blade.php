@@ -122,9 +122,6 @@
                 <a href="{{ route('users.trashed') }}">Archive</a>
             </li>
             <li>
-                <a href="#">Roles</a>
-            </li>
-            <li>
                 <a href="{{ route('permissions.index') }}">Permissions</a>
             </li>
         </ul>
