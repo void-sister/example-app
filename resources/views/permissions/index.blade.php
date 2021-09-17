@@ -8,7 +8,7 @@
     {{--Permissions--}}
     <div class="col-lg-6">
         <div class="top-campaign">
-            <div class="table-data__tool">
+            <div class="table-data__tool" style="margin-bottom: 20px!important;">
                 <h3 class="title-3 m-b-30">
                     <i class="fa fa-unlock"></i>Permissions
                 </h3>
@@ -19,6 +19,15 @@
                         <i class="zmdi zmdi-plus"></i>Add
                     </button>
                 </div>
+            </div>
+
+            <div class="mb-3">
+                <form class="form-header" action="" method="POST">
+                    <input class="au-input au-input--full" type="text" name="search" placeholder="Search permission by name or slug..." />
+                    <button class="au-btn--submit" type="submit">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                </form>
             </div>
 
             <div class="table-responsive">
