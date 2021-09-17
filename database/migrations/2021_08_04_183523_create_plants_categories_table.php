@@ -20,7 +20,6 @@ class CreatePlantsCategoriesTable extends Migration
             $table->string('name_uk');
             $table->text('description_ru');
             $table->text('description_uk');
-            $table->timestamps();
         });
     }
 
