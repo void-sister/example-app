@@ -16,7 +16,11 @@
                             <label for="name" class=" form-control-label">Name</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control">
+                            <input type="text" id="name" name="name" placeholder="Enter Name"
+                                   class="form-control @error('name') is-invalid @enderror">
+                            @error('name')
+                                <small class="error-block form-text">{{ $message }}</small>
+                            @enderror
                             <span class="help-block">Name in english</span>
                         </div>
                     </div>
@@ -25,7 +29,11 @@
                             <label for="slug" class=" form-control-label">Slug</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="slug" name="slug" placeholder="Enter Slug" class="form-control">
+                            <input type="text" id="slug" name="slug" placeholder="Enter Slug"
+                                   class="form-control @error('slug') is-invalid @enderror">
+                            @error('slug')
+                                <small class="error-block form-text">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                 </form>
@@ -37,3 +45,17 @@
         </div>
     </div>
 </div>
+
+@section('scripts')
+    @parent
+
+    @if($errors->has('name') || $errors->has('slug'))
+        <script>
+            $(function() {
+                $('#createPermission').modal({
+                    show: true
+                });
+            });
+        </script>
+    @endif
+@endsection
