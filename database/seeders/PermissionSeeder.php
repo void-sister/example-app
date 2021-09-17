@@ -14,22 +14,10 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-//        Users
+//        Permissions
         DB::table('permissions')->insert([
-            'name' => 'View users',
-            'slug' => 'view-users',
-        ]);
-        DB::table('permissions')->insert([
-            'name' => 'Create users',
-            'slug' => 'create-users',
-        ]);
-        DB::table('permissions')->insert([
-            'name' => 'Edit users',
-            'slug' => 'edit-users',
-        ]);
-        DB::table('permissions')->insert([
-            'name' => 'Delete users',
-            'slug' => 'delete-users',
+            'name' => 'Create permissions',
+            'slug' => 'create-permissions',
         ]);
         DB::table('permissions')->insert([
             'name' => 'Restore users',
