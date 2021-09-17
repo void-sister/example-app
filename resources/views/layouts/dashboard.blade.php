@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'shop page')
-
 @section('content')
 
 @php
