@@ -41,6 +41,8 @@
         <div class="page-wrapper">
 
             @yield('content')
+
+            @include('modals.create-permission')
         </div>
 
         @yield('scripts')

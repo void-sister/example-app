@@ -14,7 +14,8 @@
                 </h3>
 
                 <div class="table-data__tool-right">
-                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <button type="button" class="au-btn au-btn-icon au-btn--green au-btn--small"
+                            data-toggle="modal" data-target="#createPermission">
                         <i class="zmdi zmdi-plus"></i>Add
                     </button>
                 </div>
