@@ -1,23 +1,38 @@
 <div class="modal fade" id="createPermission" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
+                <h5 class="modal-title" id="mediumModalLabel">New permission</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>
-                    There are three species of zebras: the plains zebra, the mountain zebra and the Grévy's zebra. The plains zebra and the mountain
-                    zebra belong to the subgenus Hippotigris, but Grévy's zebra is the sole species of subgenus Dolichohippus. The latter
-                    resembles an ass, to which it is closely related, while the former two are more horse-like. All three belong to the
-                    genus Equus, along with other living equids.
-                </p>
+                <form action="{{ route('permissions.store') }}" method="POST" id="create-permission"
+                      enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="name" class=" form-control-label">Name</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control">
+                            <span class="help-block">Name in english</span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="slug" class=" form-control-label">Slug</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="slug" name="slug" placeholder="Enter Slug" class="form-control">
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Confirm</button>
+                <button type="submit" form="create-permission" class="btn btn-primary">Create</button>
             </div>
         </div>
     </div>
