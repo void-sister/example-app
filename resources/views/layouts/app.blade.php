@@ -45,8 +45,6 @@
             @include('modals.create-permission')
         </div>
 
-        @yield('scripts')
-
         <!-- Jquery JS -->
         <script src="{{ asset('/vendor/jquery-3.2.1.min.js') }}"></script>
         <!-- Bootstrap JS -->
@@ -66,6 +64,8 @@
 
         <!-- Main JS-->
         <script src="{{ asset('/js/main.js') }}"></script>
+
+        @yield('scripts')
 
     </body>
 </html>
