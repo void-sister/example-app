@@ -30,14 +30,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::group(['middleware' => 'role:admin'], function() {
-    Route::resource('users', UserController::class)->except(['show']);
     Route::post('/users/{user}/soft-delete', [UserController::class, 'softDelete'])->name('users.soft-delete');
     Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::get('/users/archive', [UserController::class, 'trashed'])->name('users.trashed');
+    Route::resource('users', UserController::class)->except(['show']);
 
-    Route::resource('plants', PlantController::class)->except(['destroy']);
     Route::post('/plants/{plant}/archive', [PlantController::class, 'archive'])->name('plants.archive');
     Route::post('/plants/{plant}/return', [PlantController::class, 'return'])->name('plants.return');
+    Route::resource('plants', PlantController::class)->except(['destroy']);
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::post('/permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
