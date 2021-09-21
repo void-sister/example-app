@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\{
+  AuthController,
+  DashboardController,
+  PermissionController,
+  PlantController,
+  UserController
+};
+
 //use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\PlantController;
 //use App\Http\Controllers\ShopController;
 //use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
