@@ -9,7 +9,7 @@
         <meta name="author" content="Hau Nguyen">
         <meta name="keywords" content="au theme template">
 
-        <title>@yield('title')</title>
+        <title>Admin | @yield('title')</title>
 
         <!-- Fontfaces CSS-->
         <link href="{{ asset('/css/font-face.css') }}" rel="stylesheet" media="all">
