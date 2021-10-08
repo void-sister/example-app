@@ -7,10 +7,6 @@ use App\Http\Controllers\admin\{
   PlantController,
   UserController
 };
-
-//use App\Http\Controllers\CategoryController;
-//use App\Http\Controllers\ShopController;
-//use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,12 +41,3 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::post('/permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
 });
-
-
-//Route::post('/plants/{slug}/add-to-cart', [PlantController::class, 'addToCart'])->name('plants.add-to-cart');
-
-//Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-
-//Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-//Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
-//Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');

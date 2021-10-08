@@ -175,23 +175,4 @@ class PlantController extends Controller
         return redirect()->route('plants.index')
             ->with('success', 'Plant returned from archive successfully');
     }
-
-    /**
-     * Add to cart specified plant.
-     *
-     * @param string $slug
-     * @param int $qty
-     * @return RedirectResponse
-     */
-    public function addToCart(string $slug, int $qty = 1): RedirectResponse
-    {
-        $service = new PlantService();
-        $cart = $service->addToCart($slug, $qty); //true
-
-        if(!$cart) {
-            return redirect()->back()->with('error', 'Plant not added to cart');
-        }
-
-        return redirect()->back()->with('success', 'Plant added to cart successfully!');
-    }
 }
