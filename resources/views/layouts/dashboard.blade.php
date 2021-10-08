@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="header-mobile-inner">
                 <a class="logo" href="index.html">
-                    <img src="{{ asset('/images/logo.webp') }}" alt="Admin" class="logo-img"/>
+                    <img src="{{ asset('/images/logo.png') }}" alt="Admin" class="logo-img"/>
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
                     <span class="hamburger-box">
@@ -34,7 +34,7 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="{{ route('dashboard') }}">
-            <img src="{{ asset('/images/logo.webp') }}" alt="Admin" class="logo-img" />
+            <img src="{{ asset('/images/logo.png') }}" alt="Admin" class="logo-img" />
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
