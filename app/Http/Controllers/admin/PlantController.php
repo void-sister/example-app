@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Services\PlantService;
 use App\Models\Plant;
 use Illuminate\Http\RedirectResponse;
@@ -51,7 +52,7 @@ class PlantController extends Controller
         }
 
         $request->validate([
-            'slug' => 'required|unique:plants|max:255',
+            'slug' => 'required|unique:plants|max:255|alpha_dash',
             'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
@@ -107,7 +108,7 @@ class PlantController extends Controller
         }
 
         $request->validate([
-            'slug' => 'required|unique:plants|max:255',
+            'slug' => 'required|unique:plants|max:255|alpha_dash',
             'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
