@@ -83,6 +83,12 @@
         </ul>
     </li>
 
+    {{--Suppliers--}}
+    <li>
+        <a href="#">
+            <i class="fa fa-truck"></i>Suppliers</a>
+    </li>
+
     {{--Posts--}}
     <li class="has-sub">
         <a class="js-arrow" href="#">
