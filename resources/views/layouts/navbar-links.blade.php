@@ -61,12 +61,18 @@
                 <a href="#">Tech</a>
             </li>
             <li>
-                <a href="#">Bouquets</a>
+                <a href="#">Kits & florariums</a>
             </li>
             <li>
-                <a href="#">For florists</a>
+                <a href="#">Books</a>
             </li>
         </ul>
+    </li>
+
+    {{--Categories--}}
+    <li>
+        <a href="#">
+            <i class="fa fa-tags"></i>Categories</a>
     </li>
 
     {{--Plants--}}
