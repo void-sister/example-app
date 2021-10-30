@@ -1,7 +1,7 @@
 <ul class="@if(!$mobile) navbar__list @else navbar-mobile__list @endif list-unstyled">
 
     {{--Dashboard--}}
-    <li class="active has-sub">
+    <li class="has-sub">
         <a class="js-arrow" href="#">
             <i class="fa fa-dashboard"></i>{{ __('Dashboard') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
@@ -120,10 +120,12 @@
 
     {{--Users--}}
     @role('admin')
-    <li class="has-sub">
-        <a class="js-arrow" href="#">
-            <i class="zmdi zmdi-account-calendar"></i>{{ __('Users') }}</a>
-        <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
+    <li class="@if(request()->is('users', 'users/*', 'permissions')) active @endif has-sub">
+        <a class="js-arrow @if(request()->is('users', 'users/*', 'permissions')) open @endif" href="#">
+            <i class="zmdi zmdi-account-calendar"></i>{{ __('Users') }}
+        </a>
+        <ul class="list-unstyled @if(!$mobile)navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list"
+            @if(request()->is('users', 'users/*', 'permissions')) style="display:block;" @endif>
             <li>
                 <a class="btn-green-link" href="{{ route('users.create') }}">{{ __('Create user') }}</a>
             </li>
