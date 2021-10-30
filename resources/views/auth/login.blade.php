@@ -10,7 +10,7 @@
                 <div class="login-content">
                     <div class="login-logo">
                         <a href="#">
-                            <img src="{{ asset('/images/logo.webp') }}" alt="Admin" class="logo-img">
+                            <img src="{{ asset('/images/logo.png') }}" alt="Admin" class="logo-img">
                         </a>
                     </div>
                     <div class="login-form">

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Services\PlantService;
 use App\Models\Plant;
 use Illuminate\Http\RedirectResponse;
@@ -51,7 +52,7 @@ class PlantController extends Controller
         }
 
         $request->validate([
-            'slug' => 'required|unique:plants|max:255',
+            'slug' => 'required|unique:plants|max:255|alpha_dash',
             'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
@@ -107,7 +108,7 @@ class PlantController extends Controller
         }
 
         $request->validate([
-            'slug' => 'required|unique:plants|max:255',
+            'slug' => 'required|unique:plants|max:255|alpha_dash',
             'name_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
             'outdoor_light' => 'required|integer',
@@ -173,24 +174,5 @@ class PlantController extends Controller
 
         return redirect()->route('plants.index')
             ->with('success', 'Plant returned from archive successfully');
-    }
-
-    /**
-     * Add to cart specified plant.
-     *
-     * @param string $slug
-     * @param int $qty
-     * @return RedirectResponse
-     */
-    public function addToCart(string $slug, int $qty = 1): RedirectResponse
-    {
-        $service = new PlantService();
-        $cart = $service->addToCart($slug, $qty); //true
-
-        if(!$cart) {
-            return redirect()->back()->with('error', 'Plant not added to cart');
-        }
-
-        return redirect()->back()->with('success', 'Plant added to cart successfully!');
     }
 }

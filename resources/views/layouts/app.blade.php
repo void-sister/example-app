@@ -9,7 +9,7 @@
         <meta name="author" content="Hau Nguyen">
         <meta name="keywords" content="au theme template">
 
-        <title>@yield('title')</title> {{--TODO--}}
+        <title>Admin | @yield('title')</title>
 
         <!-- Fontfaces CSS-->
         <link href="{{ asset('/css/font-face.css') }}" rel="stylesheet" media="all">
@@ -41,9 +41,9 @@
         <div class="page-wrapper">
 
             @yield('content')
-        </div>
 
-        @yield('scripts')
+            @include('modals.create-permission')
+        </div>
 
         <!-- Jquery JS -->
         <script src="{{ asset('/vendor/jquery-3.2.1.min.js') }}"></script>
@@ -64,6 +64,8 @@
 
         <!-- Main JS-->
         <script src="{{ asset('/js/main.js') }}"></script>
+
+        @yield('scripts')
 
     </body>
 </html>

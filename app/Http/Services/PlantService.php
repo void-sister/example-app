@@ -7,60 +7,10 @@ use App\Models\PlantSearch;
 
 class PlantService extends BaseService
 {
+    /** Methods for admin */
+
     public function getList() {
         return Plant::orderBy('is_archived')->get(); //TODO order active first
-    }
-
-    public function getListForClient($params) {
-        $query = Plant::where('is_archived', false);
-
-        if (isset($params['indoor_light'])) {
-            $query = $query->ofIndoorLightType($params['indoor_light']);
-        }
-
-        if (isset($params['size'])) {
-            $query = $query->ofSize($params['size']);
-        }
-
-        if (isset($params['difficulty'])) {
-            $query = $query->ofDifficultyType($params['difficulty']);
-        }
-
-        if (isset($params['pet_friendly'])) {
-            $query = $query->where('pet_friendly', (int)$params['pet_friendly']);
-        }
-
-        if (isset($params['air_cleaner'])) {
-            $query = $query->where('air_cleaner', (int)$params['air_cleaner']);
-        }
-
-        //TODO: add price between
-
-        if (isset($params['sorting'])) {
-            switch ($params['sorting']) {
-                case PlantSearch::SORTING_TYPE_NEWEST:
-                    $query = $query->orderByDesc('plants.created_at');
-                    break;
-                case PlantSearch::SORTING_TYPE_PRICE_ASC:
-                    $query = $query->orderBy('plants.price');
-                    break;
-                case PlantSearch::SORTING_TYPE_PRICE_DESC:
-                    $query = $query->orderByDesc('plants.price');
-                    break;
-                case PlantSearch::SORTING_TYPE_POPULARITY:
-                default:
-                    $query = $query->orderByDesc('plants.ranking');
-                    break;
-            }
-        } else {
-            $query = $query->orderByDesc('plants.ranking');
-        }
-
-        if (isset($params['amount'])) {
-            return $query->paginate((int)$params['amount']);
-        } else {
-            return $query->get();
-        }
     }
 
     public function createPlant($params)
@@ -129,24 +79,61 @@ class PlantService extends BaseService
         ]);
     }
 
-    public function addToCart($slug, $qty): bool
-    {
-        $plant = Plant::where('slug', $slug)->firstOrFail();
+    /** Methods for api */
 
-        $cart = session()->get('cart', []);
+    public function getListForClient($params) {
+        $query = Plant::where('is_archived', false);
 
-        if(isset($cart[$slug])) {
-            $cart[$slug]['quantity']++;
-        } else {
-            $cart[$slug] = [
-                "name" => $plant->plant_name,
-                "quantity" => $qty,
-                "price" => $plant->price,
-            ];
+        if (isset($params['indoor_light'])) {
+            $query = $query->ofIndoorLightType($params['indoor_light']);
         }
 
-        session()->put('cart', $cart);
+        if (isset($params['size'])) {
+            $query = $query->ofSize($params['size']);
+        }
 
-        return true; //TODO check from is returned. maybe $cart?
+        if (isset($params['difficulty'])) {
+            $query = $query->ofDifficultyType($params['difficulty']);
+        }
+
+        if (isset($params['pet_friendly'])) {
+            $query = $query->where('pet_friendly', (int)$params['pet_friendly']);
+        }
+
+        if (isset($params['air_cleaner'])) {
+            $query = $query->where('air_cleaner', (int)$params['air_cleaner']);
+        }
+
+        //TODO: add price between
+
+        if (isset($params['sorting'])) {
+            switch ($params['sorting']) {
+                case PlantSearch::SORTING_TYPE_NEWEST:
+                    $query = $query->orderByDesc('plants.created_at');
+                    break;
+                case PlantSearch::SORTING_TYPE_PRICE_ASC:
+                    $query = $query->orderBy('plants.price');
+                    break;
+                case PlantSearch::SORTING_TYPE_PRICE_DESC:
+                    $query = $query->orderByDesc('plants.price');
+                    break;
+                case PlantSearch::SORTING_TYPE_POPULARITY:
+                default:
+                    $query = $query->orderByDesc('plants.ranking');
+                    break;
+            }
+        } else {
+            $query = $query->orderByDesc('plants.ranking');
+        }
+
+        if (isset($params['amount'])) {
+            return $query->paginate((int)$params['amount']);
+        } else {
+            return $query->get();
+        }
+    }
+
+    public function getBySlug($slug) {
+        return Plant::where('slug', $slug)->get();
     }
 }
