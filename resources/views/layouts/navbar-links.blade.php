@@ -3,13 +3,13 @@
     {{--Dashboard--}}
     <li class="active has-sub">
         <a class="js-arrow" href="#">
-            <i class="fa fa-dashboard"></i>Dashboard</a>
+            <i class="fa fa-dashboard"></i>{{ __('Dashboard') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
                 <a href="#">Overview</a>
             </li>
             <li>
-                <a href="#">Statistic</a>
+                <a href="#">{{ __('Statistic') }}</a>
             </li>
         </ul>
     </li>
@@ -17,25 +17,25 @@
     {{--Tasks--}}
     <li>
         <a href="#">
-            <i class="fa fa-check-square-o"></i>Tasks</a>
+            <i class="fa fa-check-square-o"></i>{{ __('Tasks') }}</a>
     </li>
 
     {{--Orders--}}
     <li>
         <a href="#">
-            <i class="fa fa-money"></i>Orders</a>
+            <i class="fa fa-money"></i>{{ __('Orders') }}</a>
     </li>
 
     {{--Customers--}}
     <li class="has-sub">
         <a class="js-arrow" href="#">
-            <i class="fa fa-users"></i>Customers</a>
+            <i class="fa fa-users"></i>{{ __('Customers') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a href="#">List</a>
+                <a href="#">{{ __('List') }}</a>
             </li>
             <li>
-                <a href="#">Loyalty</a>
+                <a href="#">{{ __('Loyalty') }}</a>
             </li>
         </ul>
     </li>
@@ -43,28 +43,28 @@
     {{--Products--}}
     <li class="has-sub">
         <a class="js-arrow" href="#">
-            <i class="fa fa-star-o"></i>Products</a>
+            <i class="fa fa-star-o"></i>{{ __('Products') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a href="#">Plants</a>
+                <a href="#">{{ __('Plants') }}</a>
             </li>
             <li>
-                <a href="#">Pots</a>
+                <a href="#">{{ __('Pots') }}</a>
             </li>
             <li>
-                <a href="#">Soil</a>
+                <a href="#">{{ __('Soil') }}</a>
             </li>
             <li>
-                <a href="#">Accessories</a>
+                <a href="#">{{ __('Accessories') }}</a>
             </li>
             <li>
-                <a href="#">Tech</a>
+                <a href="#">{{ __('Tech') }}</a>
             </li>
             <li>
-                <a href="#">Kits & florariums</a>
+                <a href="#">{{ __('Kits & florariums') }}</a>
             </li>
             <li>
-                <a href="#">Books</a>
+                <a href="#">{{ __('Books') }}</a>
             </li>
         </ul>
     </li>
@@ -72,19 +72,19 @@
     {{--Categories--}}
     <li>
         <a href="#">
-            <i class="fa fa-tags"></i>Categories</a>
+            <i class="fa fa-tags"></i>{{ __('Categories') }}</a>
     </li>
 
     {{--Plants--}}
     <li class="has-sub">
         <a class="js-arrow" href="#">
-            <i class="fa fa-pagelines"></i>Plants</a>
+            <i class="fa fa-pagelines"></i>{{ __('Plants') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a class="btn-green-link" href="{{ route('plants.create') }}">Create plant</a>
+                <a class="btn-green-link" href="{{ route('plants.create') }}">{{ __('Create plant') }}</a>
             </li>
             <li>
-                <a href="{{ route('plants.index') }}">List</a>
+                <a href="{{ route('plants.index') }}">{{ __('List') }}</a>
             </li>
         </ul>
     </li>
@@ -92,22 +92,22 @@
     {{--Suppliers--}}
     <li>
         <a href="#">
-            <i class="fa fa-truck"></i>Suppliers</a>
+            <i class="fa fa-truck"></i>{{ __('Suppliers') }}</a>
     </li>
 
     {{--Posts--}}
     <li class="has-sub">
         <a class="js-arrow" href="#">
-            <i class="fa fa-align-left"></i>Posts</a>
+            <i class="fa fa-align-left"></i>{{ __('Posts') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a href="#">Blog</a>
+                <a href="#">{{ __('Blog') }}</a>
             </li>
             <li>
-                <a href="#">Knowledge Base</a>
+                <a href="#">{{ __('Knowledge Base') }}</a>
             </li>
             <li>
-                <a href="#">Care guides</a>
+                <a href="#">{{ __('Care guides') }}</a>
             </li>
         </ul>
     </li>
@@ -115,26 +115,26 @@
     {{--Calendar--}}
     <li>
         <a href="#">
-            <i class="fa fa-calendar"></i>Calendar</a>
+            <i class="fa fa-calendar"></i>{{ __('Calendar') }}</a>
     </li>
 
     {{--Users--}}
     @role('admin')
     <li class="has-sub">
         <a class="js-arrow" href="#">
-            <i class="zmdi zmdi-account-calendar"></i>Users</a>
+            <i class="zmdi zmdi-account-calendar"></i>{{ __('Users') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a class="btn-green-link" href="{{ route('users.create') }}">Create user</a>
+                <a class="btn-green-link" href="{{ route('users.create') }}">{{ __('Create user') }}</a>
             </li>
             <li>
-                <a href="{{ route('users.index') }}">List</a>
+                <a href="{{ route('users.index') }}">{{ __('List') }}</a>
             </li>
             <li>
-                <a href="{{ route('users.trashed') }}">Archive</a>
+                <a href="{{ route('users.trashed') }}">{{ __('Archive') }}</a>
             </li>
             <li>
-                <a href="{{ route('permissions.index') }}">Permissions</a>
+                <a href="{{ route('permissions.index') }}">{{ __('Permissions') }}</a>
             </li>
         </ul>
     </li>

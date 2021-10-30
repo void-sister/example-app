@@ -60,6 +60,9 @@
                     </form>
                     <div class="header-button">
                         <div class="noti-wrap">
+
+                            @include('layouts/language-switcher')
+
                             <div class="noti__item js-item-menu">
                                 <i class="zmdi zmdi-comment-more"></i>
                                 <span class="quantity">1</span>
