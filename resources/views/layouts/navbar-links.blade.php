@@ -55,6 +55,9 @@
                 <a href="#">{{ __('Soil') }}</a>
             </li>
             <li>
+                <a href="#">{{ __('Fertilizers') }}</a>
+            </li>
+            <li>
                 <a href="#">{{ __('Accessories') }}</a>
             </li>
             <li>
@@ -65,6 +68,9 @@
             </li>
             <li>
                 <a href="#">{{ __('Books') }}</a>
+            </li>
+            <li>
+                <a href="#">{{ __('Furniture') }}</a>
             </li>
         </ul>
     </li>

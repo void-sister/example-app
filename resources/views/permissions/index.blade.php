@@ -35,7 +35,7 @@
                     <tbody>
                         @foreach($permissions as $permission)
                         <tr>
-                            <td>{{ $permission->name }}</td>
+                            <td>{{ __("$permission->name") }}</td>
                             <td>{{ $permission->slug }}</td>
                             <td>Assign to user</td>
                         </tr>
