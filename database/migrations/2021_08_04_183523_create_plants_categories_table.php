@@ -16,8 +16,7 @@ class CreatePlantsCategoriesTable extends Migration
         Schema::create('plants_categories', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->string('name_ru');
-            $table->string('name_uk');
+            $table->string('name');
             $table->text('description_ru');
             $table->text('description_uk');
         });

@@ -15,60 +15,46 @@ class PlantCategorySeeder extends Seeder
     public function run()
     {
         DB::table('plants_categories')->insert([
-            'slug' => 'house',
-            'name_ru' => 'Комнатные',
-            'name_uk' => 'Кімнатні',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'slug' => 'blooming',
+            'name' => 'Blooming',
+            'description_ru' => 'blooming ru',
+            'description_uk' => 'blooming uk',
+        ]);
+        DB::table('plants_categories')->insert([
+            'slug' => 'ornamental',
+            'name' => 'Ornamental',
+            'description_ru' => 'ornamental ru',
+            'description_uk' => 'ornamental uk',
         ]);
         DB::table('plants_categories')->insert([
             'slug' => 'exclusive',
-            'name_ru' => 'Экслюзив',
-            'name_uk' => 'Ексклюзив',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
-        ]);
-        DB::table('plants_categories')->insert([
-            'slug' => 'garden',
-            'name_ru' => 'Садовые',
-            'name_uk' => 'Садові',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'name' => 'Exclusive',
+            'description_ru' => 'exclusive ru',
+            'description_uk' => 'exclusive uk',
         ]);
         DB::table('plants_categories')->insert([
             'slug' => 'bonsai',
-            'name_ru' => 'Бонсаи',
-            'name_uk' => 'Бонсаї',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'name' => 'Bonsai',
+            'description_ru' => 'bonsai ru',
+            'description_uk' => 'bonsai uk',
         ]);
         DB::table('plants_categories')->insert([
             'slug' => 'orchids',
-            'name_ru' => 'Орхидеи',
-            'name_uk' => 'Орхідеї',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
-        ]);
-        DB::table('plants_categories')->insert([
-            'slug' => 'office',
-            'name_ru' => 'Офисные',
-            'name_uk' => 'Офісні',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'name' => 'Orchids',
+            'description_ru' => 'orchids ru',
+            'description_uk' => 'orchids uk',
         ]);
         DB::table('plants_categories')->insert([
             'slug' => 'succulents',
-            'name_ru' => 'Суккуленты',
-            'name_uk' => 'Суккуленти',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'name' => 'Succulents',
+            'description_ru' => 'succulents ru',
+            'description_uk' => 'succulents uk',
         ]);
         DB::table('plants_categories')->insert([
             'slug' => 'cacti',
-            'name_ru' => 'Кактусы',
-            'name_uk' => 'Кактуси',
-            'description_ru' => 'rus',
-            'description_uk' => 'ukr',
+            'name' => 'Cacti',
+            'description_ru' => 'cacti ru',
+            'description_uk' => 'cacti uk',
         ]);
     }
 }
