@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlantsCategoriesTable extends Migration
+class UpdatePlantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePlantsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('plants_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
-            $table->string('name');
-            $table->text('description_ru');
-            $table->text('description_uk');
+        Schema::table('plants', function (Blueprint $table) {
+            $table->integer('category_id')->after('id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreatePlantsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plants_categories');
+        Schema::table('plants', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 }
