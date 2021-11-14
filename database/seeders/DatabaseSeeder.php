@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserPermissionSeeder::class,
 
             PlantCategorySeeder::class,
+            ProductCategorySeeder::class,
         ]);
     }
 }
