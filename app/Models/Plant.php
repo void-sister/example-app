@@ -19,7 +19,6 @@ class Plant extends Model
         'care_rules_ru',
         'care_rules_uk',
         'indoor_light',
-        'outdoor_light',
         'air_cleaner',
         'pet_friendly',
         'difficulty',
