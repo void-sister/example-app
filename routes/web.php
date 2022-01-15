@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\admin\{
-  AuthController,
-  DashboardController,
-  PermissionController,
-  PlantController,
-  UserController
-};
+use App\Http\Controllers\admin\{AuthController,
+    CustomerController,
+    DashboardController,
+    PermissionController,
+    PlantController,
+    UserController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +45,6 @@ Route::group(['middleware' => 'role:admin'], function() {
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::post('/permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
+
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
 });

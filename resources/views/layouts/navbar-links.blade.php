@@ -32,7 +32,7 @@
             <i class="fa fa-users"></i>{{ __('Customers') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a href="#">{{ __('List') }}</a>
+                <a href="{{ route('customers.index') }}">{{ __('List') }}</a>
             </li>
             <li>
                 <a href="#">{{ __('Loyalty') }}</a>
