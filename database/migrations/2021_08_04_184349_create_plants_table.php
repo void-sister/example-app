@@ -14,7 +14,8 @@ class CreatePlantsTable extends Migration
     public function up()
     {
         Schema::create('plants', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('product_category_id');
             $table->string('slug')->unique();
             $table->string('name_ru');
             $table->string('name_uk');
@@ -34,6 +35,9 @@ class CreatePlantsTable extends Migration
             $table->tinyText('notes')->nullable();
             $table->boolean('is_archived')->default(false);
             $table->timestamps();
+
+            //FOREIGN KEY CONSTRAINTS
+            $table->foreign('product_category_id')->references('category_id')->on('product_categories');
         });
     }
 
@@ -44,6 +48,9 @@ class CreatePlantsTable extends Migration
      */
     public function down()
     {
+        Schema::table('plants', function (Blueprint $table) {
+            $table->dropForeign(['product_category_id']);
+        });
         Schema::dropIfExists('plants');
     }
 }
