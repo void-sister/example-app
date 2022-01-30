@@ -105,5 +105,105 @@ class ProductCategorySeeder extends Seeder
             'description_ru' => ' ru',
             'description_uk' => ' uk',
         ]);
+
+        /**
+         * Soil category
+         */
+        DB::table('product_categories')->insert([
+            'slug' => 'soil',
+            'name' => 'Soil',
+            'description_ru' => 'soil ru',
+            'description_uk' => 'soil uk',
+        ]);
+
+        /**
+         * Fertilizers category
+         */
+        DB::table('product_categories')->insert([
+            'slug' => 'fertilizers',
+            'name' => 'Fertilizers',
+            'description_ru' => 'fertilizers ru',
+            'description_uk' => 'fertilizers uk',
+        ]);
+
+        /**
+         * Fertilizers category
+         */
+        DB::table('product_categories')->insert([
+            'slug' => 'accessories',
+            'name' => 'Accessories',
+            'description_ru' => 'accessories ru',
+            'description_uk' => 'accessories uk',
+        ]);
+
+        /**
+         * Tech category & subcategories
+         */
+        $techId = DB::table('product_categories')->insertGetId([
+            'slug' => 'tech',
+            'name' => 'Tech',
+            'description_ru' => 'tech ru',
+            'description_uk' => 'tech uk',
+        ]);
+
+        DB::table('product_categories')->insert([
+            'parent_id' => $techId,
+            'slug' => 'lamps',
+            'name' => 'Lamps',
+            'description_ru' => 'lamps ru',
+            'description_uk' => 'lamps uk',
+        ]);
+        DB::table('product_categories')->insert([
+            'parent_id' => $techId,
+            'slug' => 'humidifiers',
+            'name' => 'Humidifiers',
+            'description_ru' => 'humidifiers ru',
+            'description_uk' => 'humidifiers uk',
+        ]);
+
+        /**
+         * Kits&florariums category & subcategories
+         */
+        $kitsId = DB::table('product_categories')->insertGetId([
+            'slug' => 'kits-and-florariums',
+            'name' => 'Kits&florariums',
+            'description_ru' => 'kits and florariums ru',
+            'description_uk' => 'kits and florariums uk',
+        ]);
+
+        DB::table('product_categories')->insert([
+            'parent_id' => $kitsId,
+            'slug' => 'kits',
+            'name' => 'Kits',
+            'description_ru' => 'kits ru',
+            'description_uk' => 'kits uk',
+        ]);
+        DB::table('product_categories')->insert([
+            'parent_id' => $kitsId,
+            'slug' => 'florariums',
+            'name' => 'Florariums',
+            'description_ru' => 'florariums ru',
+            'description_uk' => 'florariums uk',
+        ]);
+
+        /**
+         * Books category
+         */
+        DB::table('product_categories')->insert([
+            'slug' => 'books',
+            'name' => 'Books',
+            'description_ru' => 'books ru',
+            'description_uk' => 'books uk',
+        ]);
+
+        /**
+         * Furniture category
+         */
+        DB::table('product_categories')->insert([
+            'slug' => 'furniture',
+            'name' => 'Furniture',
+            'description_ru' => 'furniture ru',
+            'description_uk' => 'furniture uk',
+        ]);
     }
 }
