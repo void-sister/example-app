@@ -15,7 +15,7 @@ class PlantFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => $this->faker->numberBetween(1, 7),
+            'product_category_id' => $this->faker->numberBetween(2, 8),
             'slug' => 'slug-'.$this->faker->lexify('????'),
             'name_ru' => $this->faker->name(),
             'name_uk' => $this->faker->name(),

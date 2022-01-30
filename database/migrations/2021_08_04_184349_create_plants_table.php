@@ -31,7 +31,7 @@ class CreatePlantsTable extends Migration
             $table->unsignedInteger('height');
             $table->unsignedInteger('size');
             $table->binary('picture')->nullable();
-            $table->unsignedDouble('ranking')->default(0);
+            $table->unsignedDouble('rating')->default(0);
             $table->tinyText('notes')->nullable();
             $table->boolean('is_archived')->default(false);
             $table->timestamps();

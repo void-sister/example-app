@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             CustomerSeeder::class,
 
             ProductCategorySeeder::class,
+            PlantSeeder::class,
+            PotSeeder::class,
+            SupplierSeeder::class,
         ]);
     }
 }

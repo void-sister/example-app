@@ -10,6 +10,7 @@ class Plant extends Model
     use HasFactory;
 
     protected $fillable = [
+        'product_category_id',
         'slug',
         'name_ru',
         'name_uk',

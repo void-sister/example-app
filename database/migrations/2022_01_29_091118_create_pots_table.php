@@ -16,6 +16,7 @@ class CreatePotsTable extends Migration
         Schema::create('pots', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_category_id');
+            $table->string('slug')->unique();
             $table->unsignedInteger('height');
             $table->unsignedInteger('diameter');
             $table->unsignedInteger('material');
