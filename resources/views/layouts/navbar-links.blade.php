@@ -46,7 +46,7 @@
             <i class="fa fa-star-o"></i>{{ __('Products') }}</a>
         <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
             <li>
-                <a href="#">{{ __('Plants') }}</a>
+                <a href="{{ route('plants.index') }}">{{ __('Plants') }}</a>
             </li>
             <li>
                 <a href="#">{{ __('Pots') }}</a>
@@ -79,20 +79,6 @@
     <li>
         <a href="#">
             <i class="fa fa-tags"></i>{{ __('Categories') }}</a>
-    </li>
-
-    {{--Plants--}}
-    <li class="has-sub">
-        <a class="js-arrow" href="#">
-            <i class="fa fa-pagelines"></i>{{ __('Plants') }}</a>
-        <ul class="list-unstyled @if(!$mobile) navbar__sub-list @else navbar-mobile-sub__list @endif js-sub-list">
-            <li>
-                <a class="btn-green-link" href="{{ route('plants.create') }}">{{ __('Create plant') }}</a>
-            </li>
-            <li>
-                <a href="{{ route('plants.index') }}">{{ __('List') }}</a>
-            </li>
-        </ul>
     </li>
 
     {{--Suppliers--}}
