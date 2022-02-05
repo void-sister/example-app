@@ -18,8 +18,6 @@ class CreateProductCategoriesTable extends Migration
             $table->unsignedInteger('parent_id')->nullable();
             $table->string('slug');
             $table->string('name');
-            $table->text('description_ru');
-            $table->text('description_uk');
         });
     }
 

@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ProductAssociatedSeeder::class,
             SupplierProductSeeder::class,
+
+            ProductCategoryI18NSeeder::class,
+            ProductI18NSeeder::class
         ]);
     }
 }

@@ -17,8 +17,6 @@ class PlantFactory extends Factory
         return [
             'product_category_id' => $this->faker->numberBetween(2, 8),
             'slug' => 'slug-'.$this->faker->lexify('????'),
-            'name_ru' => $this->faker->name(),
-            'name_uk' => $this->faker->name(),
             'indoor_light' => Plant::INDOOR_LIGHT_LOW,
             'difficulty' => Plant::DIFFICULTY_NO_FUSS,
             'height' => 30,
