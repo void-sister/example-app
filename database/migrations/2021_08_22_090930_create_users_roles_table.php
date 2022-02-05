@@ -18,8 +18,8 @@ class CreateUsersRolesTable extends Migration
             $table->unsignedInteger('role_id');
 
             //FOREIGN KEY CONSTRAINTS
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('CASCADE')->onUpdate('CASCADE');;
 
             //SETTING THE PRIMARY KEYS
             $table->primary(['user_id','role_id']);
@@ -34,7 +34,9 @@ class CreateUsersRolesTable extends Migration
     public function down()
     {
         Schema::table('users_roles', function (Blueprint $table) {
-            $table->dropForeign(['user_id', 'role_id']);
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['role_id']);
+
             $table->dropPrimary(['users_id_primary', 'role_id_primary']);
         });
         Schema::dropIfExists('users_roles');

@@ -20,8 +20,8 @@ class CreateSupplierProductsTable extends Migration
             $table->timestamps();
 
             //FOREIGN KEY CONSTRAINTS
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE')->onUpdate('CASCADE');;
         });
     }
 
@@ -33,7 +33,8 @@ class CreateSupplierProductsTable extends Migration
     public function down()
     {
         Schema::table('supplier_products', function (Blueprint $table) {
-            $table->dropForeign(['supplier_id', 'product_id']);
+            $table->dropForeign(['supplier_id']);
+            $table->dropForeign(['product_id']);
         });
         Schema::dropIfExists('supplier_products');
     }

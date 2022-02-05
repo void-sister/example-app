@@ -20,8 +20,8 @@ class CreateProductsAssociatedTable extends Migration
             $table->timestamps();
 
             //FOREIGN KEY CONSTRAINTS
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('color_id')->references('id')->on('colors');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('CASCADE')->onUpdate('CASCADE');;
         });
     }
 
@@ -33,7 +33,8 @@ class CreateProductsAssociatedTable extends Migration
     public function down()
     {
         Schema::table('products_associated', function (Blueprint $table) {
-            $table->dropForeign(['product_id', 'color_id']);
+            $table->dropForeign(['product_id']);
+            $table->dropForeign(['color_id']);
         });
         Schema::dropIfExists('products_associated');
     }

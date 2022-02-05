@@ -18,8 +18,8 @@ class CreateRolesPermissionsTable extends Migration
             $table->unsignedInteger('permission_id');
 
             //FOREIGN KEY CONSTRAINTS
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('permission_id')->references('id')->on('permissions');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('CASCADE')->onUpdate('CASCADE');;
 
             //SETTING THE PRIMARY KEYS
             $table->primary(['role_id','permission_id']);
@@ -34,7 +34,9 @@ class CreateRolesPermissionsTable extends Migration
     public function down()
     {
         Schema::table('roles_permissions', function (Blueprint $table) {
-            $table->dropForeign(['role_id', 'permission_id']);
+            $table->dropForeign(['role_id']);
+            $table->dropForeign(['permission_id']);
+
             $table->dropPrimary(['role_id_primary', 'permission_id_primary']);
         });
         Schema::dropIfExists('roles_permissions');
