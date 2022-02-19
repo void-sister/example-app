@@ -51,6 +51,7 @@
                                     <span class="au-checkmark"></span>
                                 </label>
                             </th>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Suppliers</th>
@@ -66,6 +67,7 @@
                                     <span class="au-checkmark"></span>
                                 </label>
                             </td>
+                            <td>{{ $plant->plant_id }}</td>
                             <td>{{ $plant->plant_name }}</td>
                             <td>{{ $plant->category_name }}</td>
                             <td>{{ $plant->suppliers }}</td>
