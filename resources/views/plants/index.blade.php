@@ -51,9 +51,9 @@
                                     <span class="au-checkmark"></span>
                                 </label>
                             </th>
-                            <th>Name ru</th>
+                            <th>Name</th>
                             <th>Category</th>
-                            <th>Notes</th>
+                            <th>Suppliers</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -66,27 +66,27 @@
                                     <span class="au-checkmark"></span>
                                 </label>
                             </td>
-                            <td>{{ $plant->name_ru }}</td>
-                            <td>Orchids, House, Exclusive</td>
-                            <td>{{ $plant->notes }}</td>
+                            <td>{{ $plant->plant_name }}</td>
+                            <td>{{ $plant->category_name }}</td>
+                            <td>{{ $plant->suppliers }}</td>
                             <td>
                                 <div class="table-data-feature">
                                     @if(!$plant->is_archived)
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <a href="{{ route('plants.edit', ['plant' => $plant]) }}"><i class="zmdi zmdi-edit"></i></a>
+                                            <a href="{{ route('plants.edit', ['plant' => $plant->plant_id]) }}"><i class="zmdi zmdi-edit"></i></a>
                                         </button>
                                     @endif
 
                                     <div style="margin-right: 5px;">
                                         @if(!$plant->is_archived)
-                                            <form method="POST" action="{{ route('plants.archive', ['plant' => $plant]) }}">
+                                            <form method="POST" action="{{ route('plants.archive', ['plant' => $plant->plant_id]) }}">
                                                 @csrf
                                                 <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Archive">
                                                     <i class="fa fa-archive"></i>
                                                 </button>
                                             </form>
                                         @else
-                                            <form method="POST" action="{{ route('plants.return', ['plant' => $plant]) }}">
+                                            <form method="POST" action="{{ route('plants.return', ['plant' => $plant->plant_id]) }}">
                                                 @csrf
                                                 <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Return">
                                                     <i class="fa fa-reply"></i>
