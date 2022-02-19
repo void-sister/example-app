@@ -17,6 +17,7 @@ class CreateProductCategoryI18n extends Migration
             $table->id();
             $table->unsignedInteger('product_category_id');
             $table->string('language');
+            $table->string('name');
             $table->longText('description');
             $table->timestamps();
 
