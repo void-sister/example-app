@@ -39,15 +39,9 @@ class PlantService extends BaseService
 
     public function updatePlant($params, Plant $plant): bool
     {
-        $updatedPlant = $plant->update([
+        return $plant->update([
             'slug' => $params['slug'],
-            'name_ru' => $params['name_ru'],
-            'name_uk' => $params['name_uk'],
             'botanical_name' => $params['botanical_name'],
-            'description_ru' => $params['description_ru'],
-            'description_uk' => $params['description_uk'],
-            'care_rules_ru' => $params['care_rules_ru'],
-            'care_rules_uk' => $params['care_rules_uk'],
             'indoor_light' => $params['indoor_light'],
             'outdoor_light' => $params['outdoor_light'],
             'air_cleaner' => array_key_exists('air_cleaner', $params) ? 1 : 0,
@@ -57,12 +51,6 @@ class PlantService extends BaseService
             'size' => $params['size'],
             'notes' => $params['notes']
         ]);
-
-        if(!$updatedPlant) {
-            //TODO early return
-        }
-
-        return $updatedPlant;
     }
 
     public function archive(Plant $plant): bool

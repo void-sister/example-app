@@ -10,7 +10,7 @@
                 <strong>Edit Plant</strong> Form
             </div>
             <div class="card-body card-block">
-                <form action="{{ route('plants.update', ['plant' => $plant]) }}" id="plant-edit-form" method="POST"
+                <form action="{{ route('plants.update', ['plant' => $plant, 'product' => $product]) }}" id="plant-edit-form" method="POST"
                       enctype="multipart/form-data" class="form-horizontal">
                     @method('PUT')
                     @csrf
@@ -20,11 +20,11 @@
                             <label class=" form-control-label">Plant name</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <p class="form-control-static">{{ $plant->name_ru }}</p>
+                            <p class="form-control-static">{{ $plant->botanical_name }}</p>
                         </div>
                     </div>
 
-                    @include('plants.form', ['plant' => $plant])
+                    @include('plants.form', ['plant' => $plant, 'translations' => $translations])
                 </form>
             </div>
             <div class="card-footer">

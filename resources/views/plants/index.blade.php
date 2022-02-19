@@ -75,7 +75,7 @@
                                 <div class="table-data-feature">
                                     @if(!$plant->is_archived)
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <a href="{{ route('plants.edit', ['plant' => $plant->plant_id]) }}"><i class="zmdi zmdi-edit"></i></a>
+                                            <a href="{{ route('plants.edit', ['plant' => $plant->plant_id, 'product' => $plant->product_id]) }}"><i class="zmdi zmdi-edit"></i></a>
                                         </button>
                                     @endif
 

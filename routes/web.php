@@ -45,6 +45,8 @@ Route::group(['middleware' => 'role:admin'], function() {
     Route::resource('plants', PlantController::class)->except(['index', 'destroy']);
 
     Route::get('/products/plants', [ProductController::class, 'plants'])->name('plants.index');
+    Route::get('/products/plants/{plant}/edit/{product}', [PlantController::class, 'edit'])->name('plants.edit');
+    Route::put('/products/plants/{plant}/update/{product}', [PlantController::class, 'update'])->name('plants.update');
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::post('/permissions/store', [PermissionController::class, 'store'])->name('permissions.store');

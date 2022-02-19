@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Models\ProductI18N;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -24,6 +25,7 @@ class ProductService extends BaseService
             ->leftJoin('supplier_products', 'products.id', '=', 'supplier_products.product_id')
             ->leftJoin('suppliers', 'supplier_products.supplier_id', '=', 'suppliers.id')
             ->select(
+                'products.id as product_id',
                 'product_i18n.name as plant_name',
                 'product_category_i18n.name as category_name',
                 'plants.id as plant_id',
@@ -39,5 +41,37 @@ class ProductService extends BaseService
                 ]);
             })
             ->get();
+    }
+
+    public function getProductTranslations(int $productId): Collection
+    {
+        return ProductI18N::where('product_id', $productId)->get();
+    }
+
+    public function updateTranslations(array $data, int $product): bool
+    {
+        $ruUpdated = DB::table('product_i18n')
+            ->where([
+                ['product_id', '=', $product],
+                ['language', '=', 'ru']
+            ])
+            ->update([
+                'name' => $data['name_ru'],
+                'description' => $data['description_ru'],
+                'care_rules' => $data['care_rules_ru']
+            ]);
+
+        $ukUpdated = DB::table('product_i18n')
+            ->where([
+                ['product_id', '=', $product],
+                ['language', '=', 'uk']
+            ])
+            ->update([
+                'name' => $data['name_uk'],
+                'description' => $data['description_uk'],
+                'care_rules' => $data['care_rules_uk']
+            ]);
+
+        return $ruUpdated > 0 && $ukUpdated > 0;
     }
 }

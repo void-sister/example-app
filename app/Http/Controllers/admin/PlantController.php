@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\PlantService;
+use App\Http\Services\{
+    PlantService,
+    ProductService
+};
 use App\Models\Plant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -87,11 +90,15 @@ class PlantController extends Controller
      * Show the form for editing the specified plant.
      *
      * @param Plant $plant
+     * @param int $product
      * @return View
      */
-    public function edit(Plant $plant): View
+    public function edit(Plant $plant, int $product): View
     {
-        return view('plants.edit', compact(['plant']));
+        $service = new ProductService();
+        $translations = $service->getProductTranslations($product);
+
+        return view('plants.edit', compact(['plant', 'translations', 'product']));
     }
 
     /**
@@ -99,28 +106,36 @@ class PlantController extends Controller
      *
      * @param Request $request
      * @param Plant $plant
+     * @param int $product
      * @return RedirectResponse
      */
-    public function update(Request $request, Plant $plant): RedirectResponse
+    public function update(Request $request, Plant $plant, int $product): RedirectResponse
     {
         if (!$request->user()->can('edit-plants')) {
             return redirect()->back()->with('error', 'You are not authorized to do this task');
         }
 
         $request->validate([
-            'slug' => 'required|unique:plants|max:255|alpha_dash',
+            'slug' => "required|unique:plants,slug,{$plant->id}|max:255|alpha_dash",
             'name_ru' => 'required|string|max:255',
+            'name_uk' => 'required|string|max:255',
+            'description_uk' => 'required|string|max:255',
+            'description_ru' => 'required|string|max:255',
             'indoor_light' => 'required|integer',
-            'outdoor_light' => 'required|integer',
             'difficulty' => 'required|integer',
             'height' => 'required|integer|min:1',
             'size' => 'required|integer',
         ]);
 
-        $service = new PlantService();
-        $updatedPlant = $service->updatePlant($request->except('_method', '_token'), $plant);
+        $data = $request->except('_method', '_token');
 
-        if(!$updatedPlant) {
+        $plantService = new PlantService();
+        $updatedPlant = $plantService->updatePlant($data, $plant);
+
+        $productService = new ProductService();
+        $updatedProduct = $productService->updateTranslations($data, $product);
+
+        if(!$updatedPlant || !$updatedProduct) {
             return redirect()->back()->with('error', 'Plant not updated');
         }
 

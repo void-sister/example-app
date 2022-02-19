@@ -1,3 +1,18 @@
+{{--Botanical name--}}
+<div class="row form-group">
+    <div class="col col-md-3">
+        <label for="botanical_name" class=" form-control-label">Botanical name</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="text" id="botanical_name" name="botanical_name" placeholder="Botanical name"
+               value="{{ old('botanical_name', isset($plant) ? $plant->botanical_name : '') }}"
+               class="form-control @error('botanical_name') is-invalid @enderror">
+        @error('botanical_name')
+        <small class="error-block form-text">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
 {{--Slug--}}
 <div class="row form-group">
     <div class="col col-md-3">
@@ -16,113 +31,55 @@
     </div>
 </div>
 
-{{--Name RU--}}
 <div class="row form-group">
-    <div class="col col-md-3">
-        <label for="name_ru" class=" form-control-label">Plant name ru</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <input type="text" id="name_ru" name="name_ru" placeholder="Plant name ru"
-               value="{{ old('name_ru', isset($plant) ? $plant->name_ru : '') }}"
-               class="form-control @error('name_ru') is-invalid @enderror">
-        @error('name_ru')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
+@foreach($translations as $translation)
+    <div class="col col-md-6">
+        {{--Name--}}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="name_{{$translation->language}}" class=" form-control-label">Plant name {{$translation->language}}</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" id="name_{{$translation->language}}" name="name_{{$translation->language}}" placeholder="Plant name {{$translation->language}}"
+                       value="{{ old('name', isset($translation) ? $translation->name : '') }}"
+                       class="form-control @error('name_'.$translation->language) is-invalid @enderror">
+                @error('name_'.$translation->language)
+                <small class="error-block form-text">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
 
-{{--Name UK--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="name_uk" class=" form-control-label">Plant name uk</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <input type="text" id="name_uk" name="name_uk" placeholder="Plant name uk"
-               value="{{ old('name_uk', isset($plant) ? $plant->name_uk : '') }}"
-               class="form-control @error('name_uk') is-invalid @enderror">
-        @error('name_uk')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
+        {{--Description--}}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="description_{{$translation->language}}" class=" form-control-label">Description {{$translation->language}}</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <textarea name="description_{{$translation->language}}" id="description_{{$translation->language}}" rows="9" placeholder="Description {{$translation->language}}"
+                          class="form-control @error('description'.$translation->language) is-invalid @enderror">{{ old('description', isset($translation) ? $translation->description : '') }}
+                </textarea>
+                @error('description_'.$translation->language)
+                <small class="error-block form-text">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
 
-{{--Botanical name--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="botanical_name" class=" form-control-label">Botanical name</label>
+        {{--Care rules--}}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="care_rules_{{$translation->language}}" class=" form-control-label">Care rules {{$translation->language}}</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <textarea name="care_rules_{{$translation->language}}" id="care_rules_{{$translation->language}}" rows="9" placeholder="Care rules {{$translation->language}}"
+                          class="form-control @error('care_rules_'.$translation->language) is-invalid @enderror">{{ old('care_rules', isset($translation) ? $translation->care_rules : '') }}
+                </textarea>
+                @error('care_rules_'.$translation->language)
+                <small class="error-block form-text">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
     </div>
-    <div class="col-12 col-md-9">
-        <input type="text" id="botanical_name" name="botanical_name" placeholder="Botanical name"
-               value="{{ old('botanical_name', isset($plant) ? $plant->botanical_name : '') }}"
-               class="form-control @error('botanical_name') is-invalid @enderror">
-        @error('botanical_name')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
-
-{{--Description ru--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="description_ru" class=" form-control-label">Description ru</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <textarea name="description_ru" id="description_ru" rows="9" placeholder="Description ru"
-                  class="form-control @error('description_ru') is-invalid @enderror">
-            {{ old('description_ru', isset($plant) ? $plant->description_ru : '') }}
-        </textarea>
-        @error('description_ru')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
-
-{{--Description uk--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="description_uk" class=" form-control-label">Description uk</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <textarea name="description_uk" id="description_uk" rows="9" placeholder="Description uk"
-                  class="form-control @error('description_uk') is-invalid @enderror">
-            {{ old('description_uk', isset($plant) ? $plant->description_uk : '') }}
-        </textarea>
-        @error('description_uk')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
-
-{{--Care rules ru--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="care_rules_ru" class=" form-control-label">Care rules ru</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <textarea name="care_rules_ru" id="care_rules_ru" rows="9" placeholder="Care rules ru"
-                  class="form-control @error('care_rules_ru') is-invalid @enderror">
-            {{ old('care_rules_ru', isset($plant) ? $plant->care_rules_ru : '') }}
-        </textarea>
-        @error('care_rules_ru')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
-</div>
-
-{{--Care rules uk--}}
-<div class="row form-group">
-    <div class="col col-md-3">
-        <label for="care_rules_uk" class=" form-control-label">Care rules uk</label>
-    </div>
-    <div class="col-12 col-md-9">
-        <textarea name="care_rules_uk" id="care_rules_uk" rows="9" placeholder="Care rules uk"
-                  class="form-control @error('care_rules_uk') is-invalid @enderror">
-            {{ old('care_rules_uk', isset($plant) ? $plant->care_rules_uk : '') }}
-        </textarea>
-        @error('care_rules_uk')
-        <small class="error-block form-text">{{ $message }}</small>
-        @enderror
-    </div>
+@endforeach
 </div>
 
 {{--Indoor light--}}
